@@ -1,0 +1,171 @@
+@import "../common/init";
+
+body {
+  background: #ffffff;
+}
+
+.login-btn {
+  width: 90px;
+  height: 40px;
+  border: none;
+  border-radius: 4px;
+  background: #f6766a;
+  color: #ffffff;
+  outline: none;
+  cursor: pointer;
+}
+
+.mask-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, .3);
+  overflow-y: scroll;
+  display: none;
+  z-index: 120;
+
+  .auth-wrapper {
+    $authWrapperHeight: 520px;
+    $authWrapperWidth: 400px;
+    width: $authWrapperWidth;
+    height: $authWrapperHeight;
+    background: #ffffff;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    margin-left: -$authWrapperWidth/2;
+    margin-top: -$authWrapperHeight/2;
+
+
+    .close-group {
+      width: $authWrapperWidth;
+      height: 40px;
+      box-sizing: border-box;
+
+      .close-btn {
+        padding: 10px;
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        float: right;
+        color: #f6766a;
+        cursor: pointer;
+
+        img {
+          width: 100%;
+          height: 100%;
+        }
+      }
+    }
+
+    .auth-inner-wrapper {
+      width: 100%;
+      height: $authWrapperHeight - 40px;
+      background: #f6766a;
+      position: relative;
+      overflow: hidden;
+
+
+
+      .scroll-wrapper {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: $authWrapperWidth*2;
+        height: 100%;
+        background: #ffffff;
+
+        .auth-group {
+          width: $authWrapperWidth;
+          height: 100%;
+          box-sizing: border-box;
+          padding: 0 20px 20px;
+
+          .top-group {
+            height: 36px;
+            line-height: 33px;
+            overflow: hidden;
+            border-bottom: 1px solid #eeeeee;
+
+            .title {
+              float: left;
+              border-bottom: 4px solid #3a3a3a;
+            }
+
+            .switch {
+              float: right;
+              color: #5c87d9;
+
+            }
+          }
+
+          .form-group{
+            margin-top: 20px;
+            .input-group{
+              margin-bottom: 20px;
+              height: 40px;
+              .form-control{
+                border: 1px solid #ccc;
+                padding: 10px;
+                width: 100%;
+                box-sizing: border-box;
+                height: 40px;
+                outline: none;
+              }
+              .remember-label{
+                font-size: 14px;
+              }
+              .submit-btn{
+                width: 100%;
+                height: 40px;
+                background: #5c87d9;
+                border: none;
+                color: #fff;
+                cursor: pointer;
+              }
+              .short-input-group{
+                  width: 250px;
+                  float: left;
+              }
+              .input-group-addon{
+                float: right;
+                width: 100px;
+
+                .img-captcha {
+                  cursor: pointer;
+                }
+
+                .sms-captcha-btn{
+                  width: 100%;
+                  height: 40px;
+                  border: 1px solid #5c87d9;
+                  color: #5c87d9;
+                  display: inline-block;
+                  text-align: center;
+                  line-height: 40px;
+                  box-sizing: border-box;
+                  cursor: pointer;
+                }
+              }
+            }
+        }
+        }
+
+        .signin-group {
+          float: left;
+          background: #ffffff;
+          overflow: hidden;
+        }
+
+        .signup-group {
+          float: right;
+          background: #ffffff;
+        }
+      }
+    }
+  }
+}
+

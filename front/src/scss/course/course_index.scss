@@ -1,0 +1,80 @@
+@import "../common/init.scss";
+@import "../common/header.scss";
+@import "../common/body";
+@import "../common/footer";
+@import "../common/constant";
+@import "couse_nav.scss";
+
+.main {
+  .wrapper {
+    background: none;
+
+    .course-list {
+      margin-top: 20px;
+      display: -webkit-flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      align-content: space-between;
+
+      li {
+        $courseItemHeight: 280px;
+        $thumbnailHeight: 158px;
+        width: 278px;
+        height: 280px;
+        background: #ffffff;
+        margin-right: 12px;
+        margin-bottom: 20px;
+
+        &:hover {
+            box-shadow: 0 3px 14px rgba(0,0,0,0.1);
+        }
+
+        a {
+          .thumbnail-group {
+          width: 100%;
+          height: 158px;
+
+          img {
+            width: 100%;
+            height: 100%;
+          }
+        }
+
+          .course-info {
+          padding: 16px;
+          width: 100%;
+          box-sizing: border-box;
+          height: $courseItemHeight - $thumbnailHeight;
+          position: relative;
+
+          .title {
+            color: #212121;
+          }
+
+          .author {
+            color: #878787;
+            margin-top: 10px;
+            font-size: 14px;
+          }
+
+          .price-group {
+            position: absolute;
+            left: 16px;
+            bottom: 16px;
+            right: 16px;
+            text-align: right;
+
+            .pay {
+              color: rgb(245, 74, 74);
+            }
+
+            .free {
+              color: rgb(126, 211, 33);
+            }
+          }
+        }
+        }
+      }
+    }
+  }
+}

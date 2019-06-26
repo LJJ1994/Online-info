@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>{% block title %}{% endblock %} | 小桌桌管理系统</title>
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <link rel="stylesheet" href="{% static 'css/adminlte/bower_components/bootstrap/dist/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/adminlte/bower_components/font-awesome/css/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/adminlte/dist/css/AdminLTE.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/adminlte/dist/css/skins/_all-skins.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/adminlte/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css' %}">
+    <link rel="stylesheet" href="{% static 'sweetalert/sweetalert.css' %}">
+    <script src="{% static 'css/adminlte/bower_components/jquery/dist/jquery.min.js' %}"></script>
+    <script src="{% static 'css/adminlte/bower_components/bootstrap/dist/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'css/adminlte/dist/js/adminlte.min.js' %}"></script>
+    <script src="{% static 'sweetalert/sweetalert.min.js' %}"></script>
+    <script src="{% static 'js/xfzajax.min.js' %}"></script>
+    <script src="{% static 'js/xfzalert.min.js' %}"></script>
+    <script src="{% static 'js/message.min.js' %}"></script>
+    {% block head %}{% endblock %}
+</head>
+<body class="hold-transition skin-blue sidebar-mini">
+<div class="wrapper">
+    <header class="main-header">
+        <!-- Logo -->
+        <a href="{% url 'cms:index' %}" class="logo">
+            <!-- mini logo for sidebar mini 50x50 pixels -->
+            <span class="logo-mini"><b>CMS</b></span>
+            <!-- logo for regular state and mobile devices -->
+            <span class="logo-lg">小桌桌后台管理系统</span>
+        </a>
+        <!-- Header Navbar: style can be found in header.less -->
+        <nav class="navbar navbar-static-top">
+            <!-- Sidebar toggle button-->
+            <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
+                <span class="sr-only">Toggle navigation</span>
+            </a>
+
+            <div class="navbar-custom-menu">
+                <ul class="nav navbar-nav">
+                    <li class="dropdown user user-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            <img src="{% static 'images/avatar.jpeg' %}"
+                                 class="user-image" alt="User Image">
+                            <span class="hidden-xs">小桌桌</span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <!-- User image -->
+                            <li class="user-header">
+                                <img src="{% static 'images/avatar.jpeg' %}"
+                                     class="img-circle" alt="User Image">
+                                <p>
+                                    小桌桌
+                                    <small>Python web开发工程师</small>
+                                </p>
+                            </li>
+                            <!-- Menu Footer-->
+                            <li class="user-footer">
+                                <div class="pull-left">
+                                    <a href="#" class="btn btn-default btn-flat">个人中心</a>
+                                </div>
+                                <div class="pull-right">
+                                    <a href="#" class="btn btn-default btn-flat">退出登录</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <aside class="main-sidebar">
+        <!-- sidebar: style can be found in sidebar.less -->
+        <section class="sidebar">
+            <form action="#" method="get" class="sidebar-form">
+                <div class="input-group">
+                    <input type="text" name="q" class="form-control" placeholder="首页">
+                    <span class="input-group-btn">
+                        <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
+                        </button>
+                  </span>
+                </div>
+            </form>
+            <!-- /.search form -->
+            <!-- sidebar menu: : style can be found in sidebar.less -->
+            <ul class="sidebar-menu" data-widget="tree">
+                <li class="active">
+                    <a href="#">
+                        <i class="fa fa-home"></i>
+                        <span>首页</span>
+                    </a>
+                </li>
+                <li class="header">新闻管理</li>
+                <li>
+                    <a href="#">
+                        <i class="fa fa-list"></i>
+                        <span>新闻列表</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'cms:write_news' %}">
+                        <i class="fa fa-edit"></i>
+                        <span>发布新闻</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'cms:news_category' %}">
+                        <i class="fa fa-tag"></i>
+                        <span>新闻分类</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa fa-window-restore"></i>
+                        <span>轮播图</span>
+                    </a>
+                </li>
+                <li class="header">课程管理</li>
+                <li>
+                    <a href="#">
+                        <i class="fa fa-tv"></i>
+                        <span>发布课程</span>
+                    </a>
+                </li>
+            </ul>
+        </section>
+    </aside>
+    <div class="content-wrapper">
+        <section class="content-header">
+            {% block content-header %}{% endblock %}
+        </section>
+        <section class="content">
+            {% block content %}{% endblock %}
+        </section>
+    </div>
+    <footer class="main-footer">
+        <div class="footer-group" style="text-align: center">
+            <strong>小桌桌</strong>后台管理系统
+        </div>
+    </footer>
+</div>
+</body>
+</html>

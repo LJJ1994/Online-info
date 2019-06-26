@@ -1,0 +1,71 @@
+{% extends 'cms/base.html' %}
+
+{% block title %}
+    新闻发布
+{% endblock %}
+
+{% block head %}
+    <script src="{% static 'ueditor/ueditor.config.js' %}"></script>
+    <script src="{% static 'ueditor/ueditor.all.min.js' %}"></script>
+    <script src="https://unpkg.com/qiniu-js@2.4.0/dist/qiniu.min.js"></script>
+    <script src="{% static 'js/write_news.min.js'%}"></script>
+{% endblock %}
+
+{% block content-header %}
+    <h1>发布新闻</h1>
+{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box box-primary">
+                <form action="" class="form">
+                    <div class="box-body">
+                        <div class="form-group">
+                            <label for="title-form">标题</label>
+                            <input type="text" class="form-control" name="title" id="title-form">
+                        </div>
+                        <div class="form-group">
+                            <label for="category-form">分类</label>
+                            <select class="form-control" name="category" id="category-form">
+                                {% for category in categories %}
+                                    <option value="{{ category.pk }}">{{ category.name }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="desc-form" class="desc">描述</label>
+                            <input type="text" id="desc-form" name="desc" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="thumbnail-form">缩略图</label>
+                            <div class="input-group">
+                                <input type="text" id="thumbnail-form" name="thumbnail" class="form-control">
+                                <span class="input-group-btn">
+                                    <label class="btn btn-default btn-file">
+                                        上传图片
+                                        <input hidden type="file" class="btn btn-default" id="thumbnail-btn">
+                                    </label>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="form-group" id="progress-group" style="display: none">
+                            <div class="progress">
+                              <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar"
+                                   aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 0">
+                              </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="content-form">内容</label>
+                            <script id="container" name="content" type="text/plain"></script>
+                        </div>
+                    </div>
+                    <div class="box-footer">
+                        <button class="btn btn-default pull-right" id="submit-btn">发布新闻</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

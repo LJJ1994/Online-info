@@ -1,0 +1,147 @@
+{% extends 'base/front_base.html' %}
+
+{% load news_filter %}
+{% block title %}
+    资讯首页
+{% endblock %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'scss/news/index.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/base.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/swiper.min.css' %}">
+    <script src="{% static 'js/swiper.min.min.js' %}"></script>
+    <script src="{% static 'js/arttemplate.js' %}"></script>
+    <script src="{% static 'js/index.min.js' %}"></script>
+
+    <script id="tpl" type="text/html">
+        {% verbatim %}
+            {{ each newses news index }}
+                <li>
+                    <div class="thumbnail-group">
+                        <a href="">
+                            <img src="{{ news.thumbnail }}" alt="">
+                        </a>
+                    </div>
+                    <div class="news-group">
+                        <p class="title">
+                            <a href="#">{{ news.title }}</a>
+                        </p>
+                        <p class="desc">
+                            {{ news.desc }}
+                        </p>
+                        <p class="more">
+                            <span class="category">{{ news.category.name }}</span>
+                            <span class="pub-time">{{ news.pub_time | timeSince }}</span>
+                            <span class="author">{{ news.author.username }}</span>
+                        </p>
+                    </div>
+                </li>
+            {{ /each }}
+        {% endverbatim %}
+    </script>
+{% endblock %}
+
+{% block main %}
+    <div class="main">
+        <div class="wrapper">
+            <div class="main-content-wrapper">
+                <div class="swiper-container">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide"><a href=""><img src="{% static 'images/1.jpg' %}" alt=""></a></div>
+                        <div class="swiper-slide"><a href=""><img src="{% static 'images/2.jpg' %}" alt=""></a></div>
+                        <div class="swiper-slide"><a href=""><img src="{% static 'images/3.png' %}" alt=""></a></div>
+                        <div class="swiper-slide"><a href=""><img src="{% static 'images/4.jpeg' %}" alt=""></a></div>
+                    </div>
+                    <!-- 如果需要分页器 -->
+                    <div class="swiper-pagination"></div>
+                    <!-- 如果需要导航按钮 -->
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-button-next"></div>
+                </div>
+                <div class="news-outer-group">
+                    <ul class="list-tab">
+                        {% for category in categories %}
+                            <li class="active"><a href="#">{{ category.name }}</a></li>
+                        {% endfor %}
+
+                    </ul>
+                    <ul class="list-inner-gropu">
+                        {% for new in news %}
+                            <li>
+                                <div class="thumbnail-group">
+                                    <a href="">
+                                        <img src="{{ new.thumbnail }}" alt="">
+                                    </a>
+                                </div>
+                                <div class="news-group">
+                                    <p class="title">
+                                        <a href="#">{{ new.title }}</a>
+                                    </p>
+                                    <p class="desc">
+                                        {{ new.desc }}
+                                    </p>
+                                    <p class="more">
+                                        <span class="category">{{ new.category.name }}</span>
+                                        <span class="pub-time">{{ new.pub_time | time_since }}</span>
+                                        <span class="author">{{ new.author.get_full_name }}</span>
+                                    </p>
+                                </div>
+                            </li>
+                        {% endfor %}
+
+                    </ul>
+                    <div class="load-more-gropu">
+                        <button class="load-more" id="load-more">查看更多</button>
+                    </div>
+                </div>
+            </div>
+            <div class="sidebar-wrapper">
+                <div class="title-group">
+                    <span class="title">小饭桌创业课堂</span>
+                    <a href="" class="more">更多</a>
+                </div>
+                <div class="avertise-group">
+                    <a href="#"><img src="http://www.xfz.cn/static/build/images/side-gift-banner.png" alt=""></a>
+                </div>
+                <div class="platform-group">
+                    <div class="title-group">
+                        <span class="title">关注小饭桌</span>
+                    </div>
+                    <div class="focus-group">
+                        <ul class="left-group">
+                            <li class="zhihu"><a href="#">小饭桌创业课堂</a></li>
+                            <li class="weibo"><a href="#">小饭桌创业课堂</a></li>
+                            <li class="toutiao"><a href="#">小饭桌</a></li>
+                        </ul>
+                        <div class="right-group">
+                            <p class="desc">扫码关注小饭桌微信公众号xfz008</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="hot-news-group">
+                    <div class="title-group">
+                        <span class="title">热门推荐</span>
+                    </div>
+                    <div class="hot-list-group">
+                        <li>
+                            <div class="left-group">
+                                <p class="title">
+                                    <a href="#">王健林卖掉进军海外首个项目:17亿售伦敦ON...</a>
+                                </p>
+                                <p class="more">
+                                    <span class="category">深度报导</span>
+                                    <span class="pub-time">1小时前</span>
+                                </p>
+                            </div>
+                            <div class="right-group">
+                                <a href="#">
+                                    <img src="http://static-image.xfz.cn/1516169692_914.jpg-website.news.list" alt="">
+                                </a>
+                            </div>
+                        </li>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

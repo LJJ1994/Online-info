@@ -1,0 +1,164 @@
+@import "../common/header.scss";
+@import "../common/body.scss";
+@import "../common/footer";
+@import "../common/constant";
+
+.main{
+
+  .wrapper {
+
+    .main-content-wrapper {
+      background: #ffffff;
+      padding: 20px;
+      box-sizing: border-box;
+
+      .news-wrapper {
+
+        .title {
+          font-size: 24px;
+          color: #212121;
+          font-weight: 400;
+        }
+
+        .news-info {
+          margin-top: 20px;
+          overflow: hidden;
+          font-size: 14px;
+          color: #878787;
+          line-height: 28px;
+          height: 28px;
+
+          .info-group {
+            float: left;
+
+            .pub-time {
+              margin-left: 20px;
+            }
+
+            .category {
+              margin-left: 20px;
+              background: #f6766a;
+              border-radius: 2px;
+              color: #ffffff;
+              padding: 1px 4px;
+            }
+          }
+
+          .share-group {
+            float: right;
+            overflow: hidden;
+
+            .share {
+              float: left;
+            }
+
+            .share-items {
+              background-image: url("https://www.xfz.cn/static/build/images/share.png");
+              background-size: 240%;
+              background-repeat: no-repeat;
+              width: 28px;
+              height: 28px;
+              float: left;
+            }
+
+            .weixin {
+            }
+
+            .weibo {
+              background-position: -39px 0;
+              margin-left: 10px;
+            }
+          }
+        }
+
+        .article {
+          margin-top: 20px;
+
+          img {
+            max-width: 100%;
+          }
+        }
+      }
+
+      .comment-wrapper {
+        border-top: 1px solid #eeeeee;
+        padding-top: 20px;
+
+        .title {
+          color: #212121;
+          font-size: 18px;
+          font-weight: 400;
+        }
+
+        .comment-textarea {
+          margin-top: 10px;
+          width: 100%;
+          resize: none;
+          outline: none;
+          border: 1px solid #ccc;
+          border-radius: 5px;
+          font-size: 14px;
+          padding: 6px 10px;
+          box-sizing: border-box;
+        }
+
+        .nologin-textarea {
+          height: 40px;
+          line-height: 26px;
+          overflow: hidden;
+        }
+
+        .logined-textarea {
+          height: 80px;
+        }
+
+        .submit-btn-group {
+          text-align: right;
+          margin-top: 10px;
+
+          .submit-btn {
+            background: #f6766a;
+            color: #ffffff;
+            border-radius: 5px;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+          }
+        }
+
+        .comment-list {
+          margin-top: 20px;
+
+          .comment-info {
+            overflow: hidden;
+            height: 40px;
+            line-height: 40px;
+            font-size: 16px;
+            color: #878787;
+
+            .avator {
+              float: left;
+              width: 40px;
+              height: 40px;
+              border-radius: 50%;
+            }
+
+            .author {
+              float: left;
+              margin-left: 20px;
+            }
+
+            .pub-time {
+              float: right;
+            }
+          }
+
+          .comment-content {
+            margin-top: 20px;
+            margin-left: 60px;
+          }
+        }
+      }
+    }
+  }
+}

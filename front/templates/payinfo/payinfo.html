@@ -1,0 +1,49 @@
+{% extends 'base/front_base.html' %}
+
+{% block title %}
+    付费资讯
+{% endblock %}
+
+{% block main %}
+    <div class="main">
+        <div class="wrapper">
+            <div class="main-content-wrapper">
+                <div class="advertise-group">
+                    <img src="http://www.xfz.cn/static/build/images/web-venture-banner.png" alt="">
+                </div>
+                <ul class="document-list">
+                    <li>
+                        <div class="category-group"></div>
+                        <div class="document-info">
+                            <p class="document-title">如何写好一份商业计划书</p>
+                            <p class="document-desc">一份好的商业计划书，是创业成功的开始！</p>
+                            <p class="document-price">￥8.8</p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="category-group"></div>
+                        <div class="document-info">
+                            <p class="document-title">如何写好一份商业计划书</p>
+                            <p class="document-desc">一份好的商业计划书，是创业成功的开始！</p>
+                            <p class="document-price">￥8.8</p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="category-group"></div>
+                        <div class="document-info">
+                            <p class="document-title">如何写好一份商业计划书</p>
+                            <p class="document-desc">一份好的商业计划书，是创业成功的开始！</p>
+                            <p class="document-price">￥8.8</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            {% include 'common/side_bar.html' %}
+        </div>
+    </div>
+{% endblock %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'scss/payinfo/payinfo.min.css' %}">
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_1249473_7i3ugom7rji.css">
+{% endblock %}

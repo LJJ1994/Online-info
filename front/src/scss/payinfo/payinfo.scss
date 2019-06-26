@@ -1,0 +1,77 @@
+@import "../common/init";
+@import "../common/header";
+@import "../common/body";
+@import "../common/constant";
+@import "../common/footer";
+
+.main {
+  .wrapper {
+    .main-content-wrapper {
+      .advertise-group {
+        width: 100%;
+        height: 200px;
+
+        img {
+          width: 100%;
+          height: 100%;
+        }
+      }
+
+      .document-list {
+        padding: 20px;
+        background: #ffffff;
+        overflow: hidden;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+
+        li {
+          width: 370px;
+          height: 150px;
+          border: 1px solid #ccc;
+          margin-bottom: 20px;
+          overflow: hidden;
+
+
+          .category-group {
+            width: 100px;
+            height: 150px;
+            float: left;
+            background-size: 100%;
+            background-position: 0 0;
+            background-image: url("http://xfz.cn/static/build/images/web-bp-pc.png");
+          }
+
+          .document-info {
+            float: left;
+            padding: 10px;
+            position: relative;
+            width: 270px;
+            height: 150px;
+            box-sizing: border-box;
+
+            .document-title {
+              color: #212121;
+              font-size: 16px;
+            }
+
+            .document-desc {
+              color: #878787;
+              font-size: 14px;
+              margin-top: 20px;
+            }
+
+            .document-price {
+              color: #f6766a;
+              position: absolute;
+              right: 20px;
+              bottom: 20px;
+              text-align: right;
+            }
+          }
+        }
+      }
+    }
+  }
+}

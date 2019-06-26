@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_1249473_7i3ugom7rji.css">
+    <link rel="stylesheet" href="{% static 'scss/auth/auth.min.css' %}">
+    <script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+    <script src="{% static 'js/xfzajax.min.js' %}"></script>
+    <script src="{% static 'js/message.min.js' %}"></script>
+    <script src="{% static 'js/front-base.min.js' %}"></script>
+    {% block head %}{% endblock %}
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="logo-box">
+                <a href="/"></a>
+            </div>
+            <ul class="nav">
+                <li class="active"><a href="/">创业资讯</a></li>
+                <li><a href="/">创业课堂</a></li>
+                <li><a href="/">付费资讯</a></li>
+                <li><a href="/">搜索</a></li>
+            </ul>
+            <div class="auth-box">
+                <i class="icon-icon_e_n iconfont"></i>&nbsp;
+                {% if user.is_authenticated %}
+                    <a href="#">{{ user.username }}</a>
+                    <div class="user-more-box">
+                        <i class="triangle"></i>
+                        {% if user.is_staff %}
+                            <a href="{% url 'cms:index' %}">管理系统</a>
+                        {% endif %}
+                        <a href="{% url 'xfzauth:logout' %}">退出登录</a>
+                    </div>
+                {% else %}
+                    <a href="#" class="signin-btn">登录</a>&nbsp;/
+                    <a href="#" class="signup-btn">注册</a>
+                {% endif %}
+            </div>
+        </div>
+    </header>
+    {% block main %}{% endblock %}
+    <footer class="footer">
+        <div class="top-group">
+            <div class="top-inner-group">
+                <div class="logo-box"></div>
+                <div class="detail-group">
+                    <div class="line1">
+                        <ul class="links">
+                            <li><a href="#">关于小饭桌</a></li>
+                            <li><a href="#">创业课堂</a></li>
+                            <li><a href="#">寻求报道</a></li>
+                            <li><a href="#">创业礼包</a></li>
+                        </ul>
+                        <div class="about-us">
+                            <span class="title">关于我们：</span>
+                            <ul class="social-group">
+                                <li class="weixin">
+                                    <div class="wx-qrcode"></div>
+                                    <span class="text">xfz008
+                                    </span>
+                                </li>
+                                <li class="weibo">
+                                    <a class="text" href="#">小饭桌创业课堂</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="line2">
+                        <p class="address">地址：广州市xxxxxxxxxxxxxxx </p>
+                        <p class="contact">联系方式：xxxxxxxxxxxxxxxxxxx </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="bottom-group">
+            ©2019 广州xxxx有限公司 粤ICP备xxxxxx号
+        </div>
+    </footer>
+    <div class="mask-wrapper">
+        <div class="auth-wrapper">
+            <div class="close-group">
+                <span class="close-btn">
+                    <img src="{% static 'images/close.png' %}" alt="">
+                </span>
+            </div>
+            <div class="auth-inner-wrapper">
+                <div class="scroll-wrapper">
+                    <div class="signin-group auth-group">
+                        <div class="top-group">
+                            <span class="title">请登录</span>
+                            <a href="javascript:void(0)" class="switch">请立即注册</a>
+                        </div>
+                        <div class="form-group">
+                            <div class="input-group">
+                                <input type="text" class="form-control" name="telephone" placeholder="请输入手机号码">
+                            </div>
+                             <div class="input-group">
+                                <input type="password" class="form-control" name="password" placeholder="请输入密码">
+                            </div>
+                            <div class="input-group">
+                                <label class="remember-label">
+                                    <input type="checkbox" name="remember" value="1">
+                                    记住我
+                                </label>
+                            </div>
+                            <div class="input-group">
+                                <input type="submit" class="submit-btn" value="立即登录">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="signup-group auth-group">
+                        <div class="top-group">
+                            <span class="title">请注册</span>
+                            <a href="javascript:void(0)" class="switch">立即登录</a>
+                        </div>
+                        <div class="form-group">
+                            <div class="input-group">
+                                <input type="text" class="form-control" name="telephone" placeholder="手机号码">
+                            </div>
+                            <div class="input-group">
+                                <input type="text" class="form-control" name="username" placeholder="用户名">
+                            </div>
+                            <div class="input-group">
+                                <div class="short-input-group">
+                                    <input type="text" class="form-control" name="img_captcha" placeholder="图形验证码">
+                                </div>
+                                <div class="input-group-addon">
+                                    <img class="img-captcha" src="{% url 'xfzauth:img_captcha' %}" alt="">
+                                </div>
+                            </div>
+                            <div class="input-group">
+                                <input type="password" class="form-control" name="password1" placeholder="密码">
+                            </div>
+                            <div class="input-group">
+                                <input type="password" class="form-control" name="password2" placeholder="确认密码">
+                            </div>
+                            <div class="input-group">
+                                <div class="short-input-group">
+                                    <input type="text" class="form-control" name="sms_captcha" placeholder="短信验证码">
+                                </div>
+                                <div class="input-group-addon">
+                                    <span class="sms-captcha-btn">发送验证码</span>
+                                </div>
+                            </div>
+                            <div class="input-group">
+                                <input type="submit" class="submit-btn" value="立即注册">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+      window.onload = function () {
+          var mySwiper = new Swiper('.swiper-container', {
+            direction: 'horizontal', // 水平切换选项
+            loop: true, // 循环模式选项
+              autoplay: true,
+              delay: 2000,
+              effect: 'slide',
+            // 如果需要分页器
+            pagination: {
+              el: '.swiper-pagination',
+            },
+            // 如果需要前进后退按钮
+            navigation: {
+              nextEl: '.swiper-button-next',
+              prevEl: '.swiper-button-prev',
+            }
+          })
+      }
+    </script>
+<!--    <script src="{% static 'js/auth.min.js' %}"></script>-->
+</body>
+</html>

@@ -1,0 +1,132 @@
+
+{% extends 'base/front_base.html' %}
+
+{% block title %}
+    {{ 搜索页面 }}
+{% endblock %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'scss/search/search.min.css' %}">
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_1249473_7i3ugom7rji.css">
+{% endblock %}
+
+{% block main %}
+    <div class="main">
+        <div class="wrapper">
+            <div class="main-content-wrapper">
+                <div class="search-group">
+                    <form action="" method="post">
+                        <input type="text" class="search-input" placeholder="请输入关键字搜索">
+                        <input type="submit" class="search-btn" value="搜索">
+                    </form>
+                </div>
+                <div class="recommend-group">
+                    <p class="recommend-title">热门推荐</p>
+                    <ul class="list-inner-gropu">
+                        <li>
+                            <div class="thumbnail-group">
+                                <a href="">
+                                    <img src="http://static-image.xfz.cn/1516169692_914.jpg-website.news.list" alt="">
+                                </a>
+                            </div>
+                            <div class="news-group">
+                                <p class="title">
+                                    <a href="#">王健林卖掉早晚会并且进军海外首个项目:17亿售伦敦ONE六成股权</a>
+                                </p>
+                                <p class="desc">
+                                    外界关于万达要出售此前在海外投资项目的消息一直不断。
+                                </p>
+                                <p class="more">
+                                    <span class="category">深度报导</span>
+                                    <span class="pub-time">1小时前</span>
+                                    <span class="author">知了课堂</span>
+                                </p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="thumbnail-group">
+                                <a href="">
+                                    <img src="http://static-image.xfz.cn/1516169692_914.jpg-website.news.list" alt="">
+                                </a>
+                            </div>
+                            <div class="news-group">
+                                <p class="title">
+                                    <a href="#">王健林卖掉早晚会并且进军海外首个项目:17亿售伦敦ONE六成股权</a>
+                                </p>
+                                <p class="desc">
+                                    外界关于万达要出售此前在海外投资项目的消息一直不断。
+                                </p>
+                                <p class="more">
+                                    <span class="category">深度报导</span>
+                                    <span class="pub-time">1小时前</span>
+                                    <span class="author">知了课堂</span>
+                                </p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="thumbnail-group">
+                                <a href="">
+                                    <img src="http://static-image.xfz.cn/1516169692_914.jpg-website.news.list" alt="">
+                                </a>
+                            </div>
+                            <div class="news-group">
+                                <p class="title">
+                                    <a href="#">王健林卖掉早晚会并且进军海外首个项目:17亿售伦敦ONE六成股权</a>
+                                </p>
+                                <p class="desc">
+                                    外界关于万达要出售此前在海外投资项目的消息一直不断。
+                                </p>
+                                <p class="more">
+                                    <span class="category">深度报导</span>
+                                    <span class="pub-time">1小时前</span>
+                                    <span class="author">知了课堂</span>
+                                </p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="thumbnail-group">
+                                <a href="">
+                                    <img src="http://static-image.xfz.cn/1516169692_914.jpg-website.news.list" alt="">
+                                </a>
+                            </div>
+                            <div class="news-group">
+                                <p class="title">
+                                    <a href="#">王健林卖掉早晚会并且进军海外首个项目:17亿售伦敦ONE六成股权</a>
+                                </p>
+                                <p class="desc">
+                                    外界关于万达要出售此前在海外投资项目的消息一直不断。
+                                </p>
+                                <p class="more">
+                                    <span class="category">深度报导</span>
+                                    <span class="pub-time">1小时前</span>
+                                    <span class="author">知了课堂</span>
+                                </p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="thumbnail-group">
+                                <a href="">
+                                    <img src="http://static-image.xfz.cn/1516010894_546.jpg-website.news.list" alt="">
+                                </a>
+                            </div>
+                            <div class="news-group">
+                                <p class="title">
+                                    <a href="#">张小龙演讲全文：小程序、公众号将会有哪些变化？</a>
+                                </p>
+                                <p class="desc">
+                                    我认为探索线下的精彩生活，这是我们下一步想要尝试的一个方向。
+                                </p>
+                                <p class="more">
+                                    <span class="category">热点</span>
+                                    <span class="pub-time">12小时前</span>
+                                    <span class="author">知了课堂</span>
+                                </p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            {% include 'common/side_bar.html' %}
+        </div>
+    </div>
+{% endblock %}

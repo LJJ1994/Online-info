@@ -1,0 +1,46 @@
+@import "../common/constant.scss";
+
+.main {
+  margin-top: 64px;
+  .course-nav {
+    background: #ffffff;
+    width: 100%;
+    height: 54px;
+    box-shadow: 0 5px 5px rgba(0,0,0,.1);
+
+    .nav-container {
+      margin: 0 auto;
+      width: $pageWidth;
+      line-height: 54px;
+      height: 54px;
+
+      .title {
+        float: left;
+        color: #696969;
+        font-size: 24px;
+      }
+
+      .nav-list {
+
+        margin-left: 100px;
+        float: left;
+
+        li {
+          float: left;
+          margin-right: 80px;
+
+          a {
+            color: #888;
+          }
+
+          &.active {
+            a {
+              color: #212121;
+              font-weight: 700;
+            }
+          }
+        }
+      }
+    }
+  }
+}

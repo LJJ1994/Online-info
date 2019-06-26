@@ -1,0 +1,122 @@
+{% extends 'base/front_base.html' %}
+
+{% block title %}
+    课程详情页
+{% endblock %}
+
+{% block head%}
+    <link rel="stylesheet" href="{% static 'scss/course/course_detail.min.css' %}">
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_1249473_7i3ugom7rji.css">
+{% endblock %}
+
+{% block main %}
+    <div class="main">
+        <div class="course-nav">
+            <div class="nav-container">
+                <h3 class="title">在线课堂</h3>
+                <ul class="nav-list">
+                    <li class="active"><a href="#">最新课堂</a></li>
+                    <li><a href="#">投资人说</a></li>
+                    <li><a href="#">明星案例</a></li>
+                    <li><a href="#">创业知识</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="wrapper">
+            <div class="course-wrapper">
+                <div class="course-info">
+                    <p class="course-title">对赌是什么 该不该做对赌</p>
+                    <div class="price-group">
+                        <div class="share-group">
+                            <span class="title">分享至： </span>
+                            <a class="weixin share-items"></a>
+                            <a href="#" class="weibo share-items"></a>
+                        </div>
+                        <div class="buy-group">
+<!--                            <span class="price pay">￥100.0</span>-->
+<!--                            <a href=""# class="buy-btn">立即购买</a>-->
+                            <span class="price free">免费</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="course-video">
+                    <img src="https://static-image.xfz.cn/1554345975_791.png-seriescourse.sub" alt="">
+                </div>
+            </div>
+            <div class="bottom-wrapper">
+                <div class="course-detail-wrapper">
+                    <div class="item-group">
+                        <p class="item-title">课程讲师</p>
+                        <div class="teacher-group">
+                            <div class="avatar-group">
+                                <img src="https://adminlte.io/themes/AdminLTE/dist/img/user2-160x160.jpg" alt="">
+                            </div>
+                            <div class="teacher-info">
+                                <p class="teacher-name">知了课堂</p>
+                                <p class="teacher-desc">乔继英，专业投资人</p>
+                            </div>
+                        </div>
+                        <p class="item-content">
+                            乔继英，专业投资人，一线基金董事总经理，十五年以上研发、市场销售、投资经验，投资领域覆盖天使投资、中早期风险投资、PE投资、并购、母基金FOF投资等领域。代表案例：华润凤凰（1515.HK）、微芯生物、二毛照护、九鼎美元基金等。个人间接投资摩拜单车、硅谷大数据公司Palantir等。曾在淡马锡祥峰投资、蓝驰创投、启迪创投等工作，世界五百强公司研发、市场销售主管。北京市高精尖产业基金评审组长、知名证券公司专业专家。清华大学本科、医学院博士、校友导师，曾与哈佛大学合作课题；香港中文大学金融MBA、客座讲师。
+                        </p>
+                    </div>
+                    <div class="item-group">
+                        <p class="item-title">课程简介</p>
+                        <p class="item-content">小饭桌在线课堂是小饭桌旗下的线上视频课程产品，汇聚顶级创业大咖导师、行业资深专家，致力于用系统、垂直的知识体系让创业者认知升级、技能进阶。小饭桌在线课堂用知识陪伴创业者从平凡到卓越！
+</p>
+                    </div>
+                    <div class="item-group">
+                        <p class="item-title">课程大纲</p>
+                        <p class="item-content">小饭桌在线课堂是小饭桌旗下的线上视频课程产品，汇聚顶级创业大咖导师、行业资深专家，致力于用系统、垂直的知识体系让创业者认知升级、技能进阶。小饭桌在线课堂用知识陪伴创业者从平凡到卓越！
+</p>
+                    </div>
+                    <div class="item-group">
+                        <p class="item-title">适宜人群</p>
+                        <p class="item-content">想学习如何做投资的！</p>
+                    </div>
+                    <div class="item-group">
+                        <p class="item-title">帮助中心</p>
+                        <p class="item-content">
+                            1. 购买后的课程在线可反复观看学习，视频有效期以具体课程信息为准。 <br>
+                                    2. 课程暂不支持下载观看，均为在线观看视频。 <br>
+                                    3. 课程一经购买，不可转让、不可退款；仅限购买账号观看。 <br>
+                                    4. 如有问题请咨询客服饭桌君： 电话：18618172287   微信：fanzhuojun888 <br>
+                        </p>
+                    </div>
+                    <div class="item-group">
+                        <p class="item-title">关于小饭桌在线课堂</p>
+                        <p class="item-content">小饭桌在线课堂是小饭桌旗下的线上视频课程产品，汇聚顶级创业大咖导师、行业资深专家，致力于用系统、垂直的知识体系让创业者认知升级、技能进阶。小饭桌在线课堂用知识陪伴创业者从平凡到卓越！
+</p>
+                    </div>
+                </div>
+                <div class="recommend-wrapper">
+                    <p class="recommend-title">推荐课程</p>
+                    <ul class="course-list">
+                        <li>
+                            <a href="#">
+                                <div class="course-info-group">
+                                    <p class="course-title">教你制作抓住投资人眼球的商业计划书</p>
+                                    <p class="teacher">知了课堂CEO</p>
+                                </div>
+                                <div class="thumbnail-group">
+                                    <img class="thumbnail" src="https://static-image.xfz.cn/1526455098_289.png-course.list.small" alt="">
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <div class="course-info-group">
+                                    <p class="course-title">教你制作抓住投资人眼球的商业计划书</p>
+                                    <p class="teacher">知了课堂CEO</p>
+                                </div>
+                                <div class="thumbnail-group">
+                                    <img class="thumbnail" src="https://static-image.xfz.cn/1526455098_289.png-course.list.small" alt="">
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

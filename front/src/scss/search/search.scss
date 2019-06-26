@@ -1,0 +1,60 @@
+@import "../common/init";
+@import "../common/header";
+@import "../common/body";
+@import "../common/constant";
+@import "../common/footer";
+@import "../common/new_list";
+
+.main {
+  .wrapper {
+    .main-content-wrapper {
+      background: #ffffff;
+      box-sizing: border-box;
+
+       .search-group {
+         overflow: hidden;
+         width: 732px;
+         height: 44px;
+         margin: 0 auto;
+         margin-top: 40px;
+         border: 1px solid #ccc;
+
+         .search-input {
+           display: block;
+           float: left;
+           width: 612px;
+           height: 44px;
+           box-sizing: border-box;
+           padding: 10px 20px;
+           font-size: 22px;
+           outline: none;
+           border: none;
+         }
+
+         .search-btn {
+           float: right;
+           width: 120px;
+           height: 44px;
+           display: block;
+           background: #e63929;
+           border-radius: 2px;
+           color: #ffffff;
+           border: none;
+           cursor: pointer;
+         }
+       }
+
+      .recommend-group {
+        .recommend-title {
+          margin-top: 40px;
+          margin-left: 20px;
+          font-size: 18px;
+        }
+
+        .list-inner-gropu {
+          @include new_list
+        }
+      }
+    }
+  }
+}
