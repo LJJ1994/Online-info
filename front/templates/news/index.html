@@ -12,30 +12,29 @@
     <script src="{% static 'js/swiper.min.min.js' %}"></script>
     <script src="{% static 'js/arttemplate.js' %}"></script>
     <script src="{% static 'js/index.min.js' %}"></script>
-
     <script id="tpl" type="text/html">
         {% verbatim %}
             {{ each newses news index }}
-                <li>
-                    <div class="thumbnail-group">
-                        <a href="">
-                            <img src="{{ news.thumbnail }}" alt="">
-                        </a>
-                    </div>
-                    <div class="news-group">
-                        <p class="title">
-                            <a href="#">{{ news.title }}</a>
-                        </p>
-                        <p class="desc">
-                            {{ news.desc }}
-                        </p>
-                        <p class="more">
-                            <span class="category">{{ news.category.name }}</span>
-                            <span class="pub-time">{{ news.pub_time | timeSince }}</span>
-                            <span class="author">{{ news.author.username }}</span>
-                        </p>
-                    </div>
-                </li>
+            <li>
+                <div class="thumbnail-group">
+                    <a href="/news/{{ news.id }}" target="_blank">
+                        <img src="{{ news.thumbnail }}" alt="">
+                    </a>
+                </div>
+                <div class="news-group">
+                    <p class="title">
+                        <a href="/news/{{ news.id }}" target="_blank">{{ news.title }}</a>
+                    </p>
+                    <p class="desc">
+                        {{ news.desc }}
+                    </p>
+                    <p class="more">
+                       <span class="category">{{ news.category.name }}</span>
+                        <span class="pub-time">{{ news.pub_time|timeSince }}</span>
+                        <span class="author">{{ news.author.username }}</span>
+                    </p>
+                </div>
+            </li>
             {{ /each }}
         {% endverbatim %}
     </script>
@@ -60,35 +59,35 @@
                 </div>
                 <div class="news-outer-group">
                     <ul class="list-tab">
+                        <li class="active" data-category="0"><a href="javascript:void(0);">最新资讯</a></li>
                         {% for category in categories %}
-                            <li class="active"><a href="#">{{ category.name }}</a></li>
+                            <li data-category="{{ category.pk }}"><a href="javascript:void(0);">{{ category.name }}</a></li>
                         {% endfor %}
 
                     </ul>
                     <ul class="list-inner-gropu">
-                        {% for new in news %}
+                        {% for news in newses %}
                             <li>
                                 <div class="thumbnail-group">
-                                    <a href="">
-                                        <img src="{{ new.thumbnail }}" alt="">
+                                    <a href="{% url 'news:news_detail' news_id=news.pk %}" target="_blank">
+                                        <img src="{{ news.thumbnail }}" alt="">
                                     </a>
                                 </div>
                                 <div class="news-group">
                                     <p class="title">
-                                        <a href="#">{{ new.title }}</a>
+                                        <a target="_blank" href="{% url 'news:news_detail' news_id=news.pk %}">{{ news.title }}</a>
                                     </p>
                                     <p class="desc">
-                                        {{ new.desc }}
+                                        {{ news.desc }}
                                     </p>
                                     <p class="more">
-                                        <span class="category">{{ new.category.name }}</span>
-                                        <span class="pub-time">{{ new.pub_time | time_since }}</span>
-                                        <span class="author">{{ new.author.get_full_name }}</span>
+                                        <span class="category">{{ news.category.name }}</span>
+                                        <span class="pub-time">{{ news.pub_time | time_since }}</span>
+                                        <span class="author">{{ news.author.get_full_name }}</span>
                                     </p>
                                 </div>
                             </li>
                         {% endfor %}
-
                     </ul>
                     <div class="load-more-gropu">
                         <button class="load-more" id="load-more">查看更多</button>

@@ -1,5 +1,5 @@
-
 {% extends 'base/front_base.html' %}
+{% load news_filter %}
 
 {% block title %}
     {{ 新闻首页 }}
@@ -8,6 +8,21 @@
 {% block head %}
     <link rel="stylesheet" href="{% static 'scss/news/news_detail.min.css' %}">
     <link rel="stylesheet" href="//at.alicdn.com/t/font_1249473_7i3ugom7rji.css">
+    <script src="{% static 'js/arttemplate.js' %}"></script>
+    <script src="{% static 'js/news_detail.min.js' %}"></script>
+
+<script type="text/html" id="comment-item">
+{% verbatim %}
+    <li>
+        <div class="comment-info">
+            <img class="avator" src="{% static 'images/avatar.jpeg' %}" alt="">
+            <span class="author">{{ comment.author.username }}</span>
+            <span class="pub-time">{{ comment.pub_time|timeSince }}</span>
+        </div>
+        <p class="comment-content">{{ comment.content }}</p>
+    </li>
+{% endverbatim %}
+</script>
 {% endblock %}
 
 {% block main %}
@@ -15,12 +30,12 @@
         <div class="wrapper">
             <div class="main-content-wrapper">
                 <div class="news-wrapper">
-                    <h1 class="title">【小饭桌早报】京东618首日累计下单金额同比增长超80%；苏宁年中大促首日大数据：销售增长163%</h1>
+                    <h1 class="title">{{ news.title }}</h1>
                     <div class="news-info">
                         <div class="info-group">
-                            <span class="author">葫芦娃</span>
-                            <span class="pub-time">06月01日</span>
-                            <span class="category">热点</span>
+                            <span class="author">{{ news.author.username }}</span>
+                            <span class="pub-time">{{ news.pub_time | time_since }}</span>
+                            <span class="category">{{ news.category.name }}</span>
                         </div>
                         <div class="share-group">
                             <span class="share">分享至： </span>
@@ -29,24 +44,27 @@
                         </div>
                     </div>
                     <article class="article">
-                        <p style="margin-top: 10px; margin-bottom: 10px; padding: 0px; line-height: 30px; color: rgb(85, 85, 85); font-family: STHeiti, &quot;Microsoft YaHei&quot;, Helvetica, Arial, sans-serif; white-space: normal; background-color: rgb(255, 255, 255);"><span style="margin: 0px; padding: 0px;"><img src="http://static-image.xfz.cn/1516010892_790.jpg" title="" alt="微信图片_20180115180731.jpg"></span></p><p style="margin-top: 10px; margin-bottom: 10px; padding: 0px; line-height: 30px; color: rgb(85, 85, 85); font-family: STHeiti, &quot;Microsoft YaHei&quot;, Helvetica, Arial, sans-serif; white-space: normal; background-color: rgb(255, 255, 255);"><span style="margin: 0px; padding: 0px;">1月15日，微信之父张小龙在2018年微信公开课上宣布：“公众号将对运营者单独发布App，新版将对作者赞赏，而不是公众号。”<br></span></p><p style="margin-top: 10px; margin-bottom: 10px; padding: 0px; line-height: 30px; color: rgb(85, 85, 85); font-family: STHeiti, &quot;Microsoft YaHei&quot;, Helvetica, Arial, sans-serif; white-space: normal; background-color: rgb(255, 255, 255);"><span style="margin: 0px; padding: 0px;">公号狗们是不是松了一口气？但还是要仔细看看张小龙到底说了啥，才能把握最新趋势。</span></p><p style="margin-top: 10px; margin-bottom: 10px; padding: 0px; line-height: 30px; color: rgb(85, 85, 85); font-family: STHeiti, &quot;Microsoft YaHei&quot;, Helvetica, Arial, sans-serif; white-space: normal; background-color: rgb(255, 255, 255);"><span style="margin: 0px; padding: 0px;">公开演讲中，张小龙主要回顾了近期火爆的微信小游戏“跳一跳”成绩，并着重强调微信自身的定位及解释小程序到底是什么。</span></p><p style="margin-top: 10px; margin-bottom: 10px; padding: 0px; line-height: 30px; color: rgb(85, 85, 85); font-family: STHeiti, &quot;Microsoft YaHei&quot;, Helvetica, Arial, sans-serif; white-space: normal; background-color: rgb(255, 255, 255);"><span style="margin: 0px; padding: 0px;">张小龙指出，小游戏“跳一跳”发布后超预期，或将成为用户规模最大的游戏，目前DAU已达1亿多，但同时外挂也很多。为扶植这款小游戏“健康成长”，微信方面将判断每位的成长曲线，若不符合则表明或存在作弊。他透露，目前跳一跳小游戏超过3000分的有30人左右，他自己最好的成绩超6000分。现场他秀了把玩“跳一跳”的技艺，但因有点紧张，只获得967分。</span></p><p style="margin-top: 10px; margin-bottom: 10px; padding: 0px; line-height: 30px; color: rgb(85, 85, 85); font-family: STHeiti, &quot;Microsoft YaHei&quot;, Helvetica, Arial, sans-serif; white-space: normal; background-color: rgb(255, 255, 255);"><span style="margin: 0px; padding: 0px;">有关微信本身，张小龙强调，微信一直以来就是工具。因为目标是成为“最好的工具”，所以克制如微信，它一开始就试图与用户建立平等的、朋友般的关系，因此不会保存用户聊天记录和有其他侵犯用户隐私的行为。</span></p><p style="margin-top: 10px; margin-bottom: 10px; padding: 0px; line-height: 30px; color: rgb(85, 85, 85); font-family: STHeiti, &quot;Microsoft YaHei&quot;, Helvetica, Arial, sans-serif; white-space: normal; background-color: rgb(255, 255, 255);"><span style="margin: 0px; padding: 0px;">此前张小龙曾提过一个观点，即好的产品应该让用户“用完即走”。今日，他又为这句话后面补充了一句“走了再回来”。这也是现在小程序的使用逻辑，包括小游戏在内，小程序比App使用起来更方便，本质是能让用户高效处理事情，下一次用户回过头来就会再使用这个工具。</span></p><p style="margin-top: 10px; margin-bottom: 10px; padding: 0px; line-height: 30px; color: rgb(85, 85, 85); font-family: STHeiti, &quot;Microsoft YaHei&quot;, Helvetica, Arial, sans-serif; white-space: normal; background-color: rgb(255, 255, 255);"><span style="margin: 0px; padding: 0px;">但这并非意味着，集合众多服务的微信想成为“中心化”的产品。张小龙指出，微信是让好的服务自己“浮现”，再由用户主动发现里面的服务。同样，小程序和小游戏也遵循微信做“去中心化”平台的逻辑。</span></p><p style="margin-top: 10px; margin-bottom: 10px; padding: 0px; line-height: 30px; color: rgb(85, 85, 85); font-family: STHeiti, &quot;Microsoft YaHei&quot;, Helvetica, Arial, sans-serif; white-space: normal; background-color: rgb(255, 255, 255);"><span style="margin: 0px; padding: 0px;">关于未来小程序和微信公众号将“去向何处”，张小龙提到了即将到来的许多变动。</span></p><p style="margin-top: 10px; margin-bottom: 10px; padding: 0px; line-height: 30px; color: rgb(85, 85, 85); font-family: STHeiti, &quot;Microsoft YaHei&quot;, Helvetica, Arial, sans-serif; white-space: normal; background-color: rgb(255, 255, 255);"><span style="margin: 0px; padding: 0px;">公众号方面，张小龙表示微信做了公众号的App，已经快完工，很快将发布。36氪从微信内部人士处获悉，新款App面向公众号运营者。另一点变动则关于公众号赞赏，新版将对作者赞赏，而非公众号。同时，微信将更加重视作者本身，他们将有独立的栏目，介绍、过去发表的文章，还能对不同的号投稿。</span></p><p style="margin-top: 10px; margin-bottom: 10px; padding: 0px; line-height: 30px; color: rgb(85, 85, 85); font-family: STHeiti, &quot;Microsoft YaHei&quot;, Helvetica, Arial, sans-serif; white-space: normal; background-color: rgb(255, 255, 255);"><span style="margin: 0px; padding: 0px;">小程序方面，张小龙披露目前日使用小程序用户数达1.7亿，用户主要分布在一线和四线及以下城市。他表示，此前小程序做得很保守，仅针对线下应用，未来将逐渐释放能力，提供更有价值的内容，让平台更丰富。作为丰富App场景功用的小程序，未来还将与微信搜一搜间打通，即通过搜一搜可搜到小程序数据，看到许多实时信息。</span></p>
+                        {{ news.content | safe }}
                     </article>
                 </div>
                 <div class="comment-wrapper">
                     <h3 class="title">文章评论(0)</h3>
                     <textarea class="comment-textarea logined-textarea" name="comment" cols="30" rows="10" placeholder="立即登录,参与评论～"></textarea>
                     <div class="submit-btn-group">
-                        <button class="submit-btn">立即评论</button>
+                        <button class="submit-btn" data-news-id="{{ news.pk }}">立即评论</button>
                     </div>
                     <ul class="comment-list">
-                        <li>
-                            <div class="comment-info">
-                                <img class="avator" src="{% static 'images/avatar.jpeg' %}" alt="">
-                                <span class="author">吱吱</span>
-                                <span class="pub-time">1小时前</span>
-                            </div>
-                            <p class="comment-content">这是第一条评论</p>
-                        </li>
+                        {% for comment in news.comment.all %}
+                            <li>
+                                <div class="comment-info">
+                                    <img class="avator" src="{% static 'images/avatar.jpeg' %}" alt="">
+                                    <span class="author">{{ comment.author.username }}</span>
+                                    <span class="pub-time">{{ comment.pub_time | time_since }}</span>
+                                </div>
+                                <p class="comment-content">{{ comment.content }}</p>
+                            </li>
+                        {% endfor %}
+                        
                     </ul>
                 </div>
             </div>

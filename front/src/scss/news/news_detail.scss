@@ -129,7 +129,12 @@
         .comment-list {
           margin-top: 20px;
 
-          .comment-info {
+          li {
+            border-bottom: 1px solid #eeeeee;
+            padding-bottom: 20px;
+            margin-bottom: 20px;
+
+            .comment-info {
             overflow: hidden;
             height: 40px;
             line-height: 40px;
@@ -156,6 +161,7 @@
           .comment-content {
             margin-top: 20px;
             margin-left: 60px;
+          }
           }
         }
       }
