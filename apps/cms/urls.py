@@ -3,9 +3,11 @@ __date__ = '2019/6/20 下午10:20'
 
 from django.urls import path
 from . import views
+from . import course_views
 
 app_name = 'cms'
 
+# 新闻相关的url
 urlpatterns = [
     path('', views.index, name='index'),
     path('write_news/', views.WriteNewsView.as_view(), name='write_news'),
@@ -18,4 +20,10 @@ urlpatterns = [
     path('delete_news_category/', views.delete_news_category, name='delete_news_category'),
     path('upload_file/', views.upload_file, name='upload_file'),
     path('qn_token/', views.qn_token, name='qn_token'),
+]
+
+
+# 课程相关的url
+urlpatterns += [
+    path('pub_course/', course_views.PublicCourseView.as_view(), name='pub_course'),
 ]

@@ -1,12 +1,17 @@
 {% extends 'base/front_base.html' %}
 
 {% block title %}
-    课程详情页
+    {{ course.title }}
 {% endblock %}
 
 {% block head%}
     <link rel="stylesheet" href="{% static 'scss/course/course_detail.min.css' %}">
     <link rel="stylesheet" href="//at.alicdn.com/t/font_1249473_7i3ugom7rji.css">
+    <script src="'{% static 'videojs/video.min.js' %}"></script>
+    <script src="'{% static 'videojs/videojs-contrib-hls.min.js' %}"></script>
+    <script src="'{% static 'videojs/videojs-contrib-quality-levels.min.js' %}"></script>
+    <script src="https://cdn.bdstatic.com/jwplayer/latest/cyberplayer.js"></script>
+    <script src="{% static 'js/course_detail.min.js' %}"></script>
 {% endblock %}
 
 {% block main %}
@@ -25,7 +30,7 @@
         <div class="wrapper">
             <div class="course-wrapper">
                 <div class="course-info">
-                    <p class="course-title">对赌是什么 该不该做对赌</p>
+                    <p class="course-title">{{ course.title }}</p>
                     <div class="price-group">
                         <div class="share-group">
                             <span class="title">分享至： </span>
@@ -33,37 +38,42 @@
                             <a href="#" class="weibo share-items"></a>
                         </div>
                         <div class="buy-group">
-<!--                            <span class="price pay">￥100.0</span>-->
-<!--                            <a href=""# class="buy-btn">立即购买</a>-->
-                            <span class="price free">免费</span>
+                            {% if course.price > 0 %}
+                                <span class="price pay">￥{{ course.price }}</span>
+                                <a href=""# class="buy-btn">立即购买</a>
+                            {% else %}
+                                <span class="price free">免费</span>
+                            {% endif %}
                         </div>
                     </div>
                 </div>
                 <div class="course-video">
-                    <img src="https://static-image.xfz.cn/1554345975_791.png-seriescourse.sub" alt="">
+                    <span hidden id="video-info" data-video-url="{{ course.video_url }}" data-cover-url="{{ course.cover_url }}" data-course-id="{{ course.pk }}"></span>
+                    <div id="playcontainer"></div>
                 </div>
             </div>
             <div class="bottom-wrapper">
                 <div class="course-detail-wrapper">
                     <div class="item-group">
-                        <p class="item-title">课程讲师</p>
+                        <p class="item-title">{{ course.title }}</p>
                         <div class="teacher-group">
                             <div class="avatar-group">
-                                <img src="https://adminlte.io/themes/AdminLTE/dist/img/user2-160x160.jpg" alt="">
+                                <img src="{{ course.cover_url }}" alt="">
                             </div>
                             <div class="teacher-info">
-                                <p class="teacher-name">知了课堂</p>
-                                <p class="teacher-desc">乔继英，专业投资人</p>
+                                <p class="teacher-name">{{ course.teacher.username }}</p>
+                                <p class="teacher-desc">{{ course.teacher.jobtitle }}</p>
                             </div>
                         </div>
                         <p class="item-content">
-                            乔继英，专业投资人，一线基金董事总经理，十五年以上研发、市场销售、投资经验，投资领域覆盖天使投资、中早期风险投资、PE投资、并购、母基金FOF投资等领域。代表案例：华润凤凰（1515.HK）、微芯生物、二毛照护、九鼎美元基金等。个人间接投资摩拜单车、硅谷大数据公司Palantir等。曾在淡马锡祥峰投资、蓝驰创投、启迪创投等工作，世界五百强公司研发、市场销售主管。北京市高精尖产业基金评审组长、知名证券公司专业专家。清华大学本科、医学院博士、校友导师，曾与哈佛大学合作课题；香港中文大学金融MBA、客座讲师。
+                            {{ course.teacher.profile }}
                         </p>
                     </div>
                     <div class="item-group">
                         <p class="item-title">课程简介</p>
-                        <p class="item-content">小饭桌在线课堂是小饭桌旗下的线上视频课程产品，汇聚顶级创业大咖导师、行业资深专家，致力于用系统、垂直的知识体系让创业者认知升级、技能进阶。小饭桌在线课堂用知识陪伴创业者从平凡到卓越！
-</p>
+                        <p class="item-content">
+                            {{ course.profile | safe}}
+                        </p>
                     </div>
                     <div class="item-group">
                         <p class="item-title">课程大纲</p>

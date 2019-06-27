@@ -24,91 +24,26 @@
         </div>
         <div class="wrapper">
             <ul class="course-list">
-                <li>
-                    <a href="#">
-                        <div class="thumbnail-group">
-                            <img src="http://static-image.xfz.cn/1513577022_550.png" alt="">
-                        </div>
-                        <div class="course-info">
-                            <p class="title">对赌是什么 该不该做对赌</p>
-                            <p class="author">知了课堂CEO</p>
-                            <p class="price-group">
-                                <span class="pay">￥29.0</span>
-                            </p>
-                        </div>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <div class="thumbnail-group">
-                            <img src="http://static-image.xfz.cn/1513577022_550.png" alt="">
-                        </div>
-                        <div class="course-info">
-                            <p class="title">对赌是什么 该不该做对赌</p>
-                            <p class="author">知了课堂CEO</p>
-                            <p class="price-group">
-                                <span class="pay">￥29.0</span>
-                            </p>
-                        </div>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <div class="thumbnail-group">
-                            <img src="http://static-image.xfz.cn/1513577022_550.png" alt="">
-                        </div>
-                        <div class="course-info">
-                            <p class="title">对赌是什么 该不该做对赌</p>
-                            <p class="author">知了课堂CEO</p>
-                            <p class="price-group">
-                                <span class="pay">￥29.0</span>
-                            </p>
-                        </div>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <div class="thumbnail-group">
-                            <img src="http://static-image.xfz.cn/1513577022_550.png" alt="">
-                        </div>
-                        <div class="course-info">
-                            <p class="title">对赌是什么 该不该做对赌</p>
-                            <p class="author">知了课堂CEO</p>
-                            <p class="price-group">
-                                <span class="pay">￥29.0</span>
-                            </p>
-                        </div>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <div class="thumbnail-group">
-                            <img src="http://static-image.xfz.cn/1513577022_550.png" alt="">
-                        </div>
-                        <div class="course-info">
-                            <p class="title">对赌是什么 该不该做对赌</p>
-                            <p class="author">知了课堂CEO</p>
-                            <p class="price-group">
-                                <span class="pay">￥29.0</span>
-                            </p>
-                        </div>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <div class="thumbnail-group">
-                            <img src="http://static-image.xfz.cn/1513577022_550.png" alt="">
-                        </div>
-                        <div class="course-info">
-                            <p class="title">对赌是什么 该不该做对赌</p>
-                            <p class="author">知了课堂CEO</p>
-                            <p class="price-group">
-                                <span class="pay">￥29.0</span>
-                            </p>
-                        </div>
-                    </a>
-                </li>
-
+                {% for course in courses %}
+                    <li>
+                        <a href="{% url 'course:course_detail' course_id=course.pk %}">
+                            <div class="thumbnail-group">
+                                <img src="{{ course.cover_url }}" alt="">
+                            </div>
+                            <div class="course-info">
+                                <p class="title">{{ course.title }}</p>
+                                <p class="author">{{ course.teacher.username }}</p>
+                                <p class="price-group">
+                                    {% if course.price > 0 %}
+                                        <span class="pay">￥{{ course.price }}</span>
+                                        {% else %}
+                                        <span class="free">免费</span>
+                                    {% endif %}
+                                </p>
+                            </div>
+                        </a>
+                    </li>
+                {% endfor %}
             </ul>
         </div>
     </div>

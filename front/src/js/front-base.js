@@ -283,7 +283,7 @@ $(function () {
 });
 
 $(function () {
-   if (template) {
+   if (window.template) {
        template.defaults.imports.timeSince = function (value) {
         // art_template模板过滤器，格式化时间
         var date = new Date(value);

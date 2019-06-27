@@ -208,3 +208,9 @@ DEBUG_TOOLBAR_PANELS = [
 DEBUG_TOOLBAR_CONFIG = {
     'JQUERY_URL': ''
 }
+
+# 百度云的配置
+# 控制台->用户中心->用户ID
+BAIDU_CLOUD_USER_ID = 'ffc4ac9f9be84f31a3d0c60bcb3963a8'
+# 点播VOD->全局设置->发布设置->安全设置->UserKey
+BAIDU_CLOUD_USER_KEY = '5fe50756068345c6'

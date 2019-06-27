@@ -4,6 +4,7 @@ __date__ = '2019/6/25 上午4:24'
 from django import forms
 from apps.common.forms import FormMixin
 from apps.news.models import News
+from apps.course.models import Course, CourseCategory, Teacher
 
 
 class EditNewsCategoryForm(forms.Form, FormMixin):
@@ -26,3 +27,12 @@ class EditNewsForm(forms.ModelForm, FormMixin):
     class Meta:
         model = News
         exclude = ['category', 'pub_time', 'author']
+
+
+class PublicCourseForm(forms.ModelForm, FormMixin):
+    category_id = forms.IntegerField()
+    teacher_id = forms.IntegerField()
+
+    class Meta:
+        model = Course
+        exclude = ['category', 'teacher']
