@@ -269,8 +269,59 @@ FrontBase.prototype.listenAuthBoxHover = function () {
 FrontBase.prototype.run = function () {
   var that = this;
   that.listenAuthBoxHover();
+  that.listenSwitchBottom();
 };
 
+// FrontBase.prototype.listenSwitchBottom = function () {
+//     var infoNav = $('#nav-info');
+//     var index = infoNav.find('li:first');
+//     index.addClass('active');
+//
+//     infoNav.children().click(function () {
+//         var btn = $(this);
+//         var url = {
+//             'info_url': '/',
+//             'course_url': '/course/',
+//             'payinfo_url': '/payinfo/',
+//             'search_url': '/search/'
+//         };
+//         var currentUrl = btn.attr('href');
+//         if (currentUrl === url.info_url) {
+//             index.removeClass('active');
+//             btn.addClass('active');
+//             // btn.siblings().removeClass('active');
+//         } else if(currentUrl===url.course_url) {
+//             index.removeClass('active');
+//             btn.addClass('active');
+//             // btn.siblings().removeClass('active');
+//         } else if (currentUrl===url.payinfo_url) {
+//             index.removeClass('active');
+//             btn.addClass('active');
+//             // btn.siblings().removeClass('active');
+//         } else {
+//             index.removeClass('active');
+//             btn.addClass('active');
+//             // btn.siblings().removeClass('active');
+//         }
+//     })
+// };
+
+FrontBase.prototype.listenSwitchBottom = function () {
+  var urlStr = location.href;
+  var urlStatus = false;
+
+  $('#nav-info a').each(function(){
+      if ((urlStr + '/').indexOf($(this).attr('href')) > -1 && $(this).attr('href') !== '') {
+          $(this).addClass('active');
+          urlStatus = true;
+      } else {
+            $(this).removeClass('active')
+      }
+  });
+  if (!urlStatus) {
+      $('#nav-info a').eq(0).addClass('active');
+  }
+};
 
 $(function () {
     var auth = new Auth();
