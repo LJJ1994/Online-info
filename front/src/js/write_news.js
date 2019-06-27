@@ -23,6 +23,16 @@ News.prototype.listenAddNewsEvent = function () {
   submitBtn.click(function (event) {
       event.preventDefault();
 
+      var btn = $(this);
+      var pk = btn.attr('data-news-id');
+      var url = '';
+
+      if (pk) {
+          url = '/cms/edit_news/';
+      } else {
+          url = '/cms/write_news/';
+      }
+
       var title = $("input[name='title']").val();
       var category = $("select[name='category']").val();
       var desc = $("input[name='desc']").val();
@@ -30,13 +40,14 @@ News.prototype.listenAddNewsEvent = function () {
       var content = window.ue.getContent();
 
       $.post({
-          url: '/cms/write_news/',
+          url: url,
           data: {
               'title': title,
               'desc': desc,
               'content': content,
               'thumbnail': thumbnail,
-              'category': category
+              'category': category,
+              'pk': pk
           },
           success: function (res) {
               if (res.code === 200) {

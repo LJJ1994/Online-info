@@ -46,3 +46,16 @@ def time_since(value):
         return value.strftime('%Y/%m/%d %H:%M')
 
 
+@register.filter
+def time_format(value):
+    """
+    格式化时间
+    :param value:
+    :return: format time
+    """
+    if not isinstance(value, datetime):
+        return value
+
+    return localtime(value).strftime('%Y/%m/%d %H:%M:%S')
+
+
