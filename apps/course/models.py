@@ -1,4 +1,5 @@
 from django.db import models
+from shortuuidfield import ShortUUIDField
 
 
 class CourseCategory(models.Model):
@@ -25,3 +26,14 @@ class Course(models.Model):
     duration = models.IntegerField()
     profile = models.TextField()
     pub_time = models.DateTimeField(auto_now_add=True)
+
+
+class CourseOrder(models.Model):
+    """课程订单"""
+    uid = ShortUUIDField(primary_key=True)  # 每个订单的uid都不同
+    course = models.ForeignKey('Course', on_delete=models.DO_NOTHING)
+    buyer = models.ForeignKey('xfzauth.User', on_delete=models.DO_NOTHING)
+    amount = models.FloatField()
+    pub_time = models.DateTimeField(auto_now_add=True)
+    is_type = models.SmallIntegerField(default=1)  # 1.代表支付宝支付 2.代表微信支付
+    status = models.SmallIntegerField(default=1)  # 1. 代表未支付状态 2.代表已支付状态

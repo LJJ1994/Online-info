@@ -1,0 +1,137 @@
+{% extends 'base/front_base.html' %}
+
+{% block title %}
+    {{ course.title }} | 订单页
+{% endblock %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'scss/common/header.min.css' %}">
+    <link rel="stylesheet" href="{% static 'scss/common/body.min.css' %}">
+    <link rel="stylesheet" href="{% static 'scss/common/footer.min.css' %}">
+    <style>
+        .table{
+            width: 100%;
+            border-top: 1px solid #ccc;
+            border-bottom: 1px solid #ccc;
+            background: #eaeaea;
+            text-align: center;
+        }
+        .table{
+            border-spacing: 20px;
+        }
+        .table img{
+            width: 120px;
+            height: 68px;
+            float: left;
+        }
+        .table .title{
+            margin-left: 10px;
+        }
+        .pay-way label{
+            float: right;
+        }
+        .pay-way span{
+            border: 1px solid #ccc;
+            position: relative;
+            top: 20px;
+        }
+        .pay-way .zfb-btn{
+            display: inline-block;
+            width: 139px;
+            height: 48px;
+            cursor: pointer;
+            background: url("http://study.163.com/res/images/pay/payList.png");
+            background-position: -140px 0;
+            background-size: 300% 200%;
+            margin-right:20px;
+        }
+        .pay-way .wx-btn{
+            display: inline-block;
+            width: 139px;
+            height: 48px;
+            position: relative;
+            cursor: pointer;
+        }
+        .pay-way .wx-btn img{
+            top: 12px;
+            left: 16px;
+            position: absolute;
+        }
+        .submit-group{
+            overflow: hidden;
+            padding: 60px 0;
+        }
+        .submit-btn{
+            display: block;
+            text-align: center;
+            width: 136px;
+            height:49px;
+            line-height: 49px;
+            background: url("http://s.stu.126.net/res/images/pay/payBtns.png?c9b6b849b38cca45b160a96802575ac8") no-repeat 4449px 4449px;
+            background-position: 0 -302px;
+            border: none;
+            cursor: pointer;
+            color: #fff;
+            font-size: 16px;
+            float: right;
+        }
+        .submit-btn:hover{
+            background-position: -139px -302px;
+        }
+    </style>
+    <scritp src="{% static 'js/course_order.min.js' %}"></scritp>
+{% endblock %}
+{% block main %}
+    <div class="main">
+        <div class="wrapper">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <td align="center">商品名称</td>
+                        <td>单价(元)</td>
+                        <td>小计(元)</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td align="left">
+                            <a href="#">
+                                <img src="{{ course.cover_url }}" alt="" class="thumbnail">
+                                <span class="title" style="text-align: right">{{ course.title }}</span>
+                            </a>
+                        </td>
+                        <td>{{ course.price }}</td>
+                        <td>{{ course.price }}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <form action="https://pay.bbbapi.com/" method="post" id="form-btn">
+                <input type="hidden" name="uid" value="49dc532695baa99e16e01bc0">
+                <input type="hidden" name="price" value="{{ course.price }}">
+                <input type="hidden" name="notify_url" value="{{ notify_url }}">
+                <input type="hidden" name="return_url" value="{{ return_url }}">
+                <input type="hidden" name="orderid" value="{{ order.pk }}">
+                <input type="hidden" name="orderuid" value="{{ request.user.pk }}">
+                <input type="hidden" name="goodsname" value="{{ course.title }}">
+                <input type="hidden" name="key" value="">
+                <div class="pay-way">
+                    <label for="istype_wx">
+                        <input type="radio" id="istype_wx" name="istype" value="2">
+                        <span class="wx-btn">
+                            <img src="http://nos.netease.com/test-edu-image/1BD9F69D6760CE1508D2269864AA54F8.png" alt="">
+                        </span>
+                    </label>
+                    <label for="istype_zfb">
+                        <input type="radio" value="1" id="istype_zfb" name="istype" checked>
+                        <span class="zfb-btn">
+                        </span>
+                    </label>
+                    <div style="clear: both;"></div>
+                </div>
+                <div class="submit-group">
+                    <input type="submit" value="去支付" id="submit-btn" class="submit-btn">
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}

@@ -3,10 +3,12 @@ import time
 import hmac
 import hashlib
 from hashlib import md5
-from django.shortcuts import render
+from django.shortcuts import render, reverse
 from django.conf import settings
-from .models import Course
+from django.views.decorators.csrf import csrf_exempt
+from .models import Course, CourseOrder
 from utils import restful
+from apps.xfzauth.decorators import xxz_login_required
 
 
 def course_index(request):
@@ -65,3 +67,59 @@ def course_token(request):
     token = '{0}_{1}_{2}'.format(signature, USER_ID, expired_time)
 
     return restful.result(data={'token': token})
+
+
+@xxz_login_required
+def course_order(request, course_id):
+    """
+    课程订单,请求参数为某个课程的id
+    :param request: course_id
+    :return:order list 返回订单列表
+    """
+    course = Course.objects.get(pk=course_id)
+    order = CourseOrder.objects.create(course=course, buyer=request.user, amount=course.price, status=1)
+    notify_url = request.build_absolute_uri(reverse('course:notify_view'))
+    return_url = request.build_absolute_uri(reverse('course:course_detail', kwargs={'course_id': course.pk}))
+    context = {
+        'course': course,
+        'order': order,
+        'notify_url': notify_url,
+        'return_url': return_url
+    }
+
+    return render(request, 'course/course_order.html', context=context)
+
+
+@xxz_login_required
+def course_order_key(request):
+    """
+    获取课程key
+    :param request:
+    :return: key
+    """
+    goodsname = request.POST.get('goodsname')
+    istype = request.POST.get('istype')
+    notify_url = request.POST.get('notify_url')
+    orderid = request.POST.get('orderid')
+    price = request.POST.get('price')
+    return_url = request.POST.get('return_url')
+
+    token = 'e6110f92abcb11040ba153967847b7a6'
+    uid = '49dc532695baa99e16e01bc0'
+    orderuid = str(request.user.pk)
+    key = md5((goodsname + istype + notify_url + orderid + orderuid + price + return_url + token + uid).encode('utf-8')).hexdigest()
+
+    return restful.ok(data={'key': key})
+
+
+@csrf_exempt
+def notify_view(request):
+    """
+    通知给自己服务器的视图函数
+    :param request:
+    :return:
+    """
+    orderid = request.POST.get('orderid')
+    CourseOrder.objects.filter(pk=orderid).update(status=2)
+
+    return restful.ok()

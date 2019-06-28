@@ -40,7 +40,7 @@
                         <div class="buy-group">
                             {% if course.price > 0 %}
                                 <span class="price pay">￥{{ course.price }}</span>
-                                <a href=""# class="buy-btn">立即购买</a>
+                                <a href="{% url 'course:course_order' course_id=course.id %}" class="buy-btn">立即购买</a>
                             {% else %}
                                 <span class="price free">免费</span>
                             {% endif %}
