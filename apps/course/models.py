@@ -33,6 +33,7 @@ class CourseOrder(models.Model):
     uid = ShortUUIDField(primary_key=True)  # 每个订单的uid都不同
     course = models.ForeignKey('Course', on_delete=models.DO_NOTHING)
     buyer = models.ForeignKey('xfzauth.User', on_delete=models.DO_NOTHING)
+    trade_no = models.CharField(max_length=200)
     amount = models.FloatField()
     pub_time = models.DateTimeField(auto_now_add=True)
     is_type = models.SmallIntegerField(default=1)  # 1.代表支付宝支付 2.代表微信支付

@@ -9,9 +9,13 @@ idna==2.8
 Markdown==3.1.1
 mysqlclient==1.4.2.post1
 Pillow==6.0.0
+pycrypto==2.6.1
+pycryptodomex==3.7.2
+python-alipay-sdk==1.10.1
 python-memcached==1.59
 pytz==2019.1
 qiniu==7.2.4
+qrcode==6.1
 requests==2.22.0
 shortuuid==0.5.0
 six==1.12.0

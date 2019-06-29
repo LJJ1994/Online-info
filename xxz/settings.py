@@ -214,3 +214,11 @@ DEBUG_TOOLBAR_CONFIG = {
 BAIDU_CLOUD_USER_ID = 'ffc4ac9f9be84f31a3d0c60bcb3963a8'
 # 点播VOD->全局设置->发布设置->安全设置->UserKey
 BAIDU_CLOUD_USER_KEY = '5fe50756068345c6'
+
+# 支付宝配置
+ALIPAY_URL = "https://openapi.alipaydev.com/gateway.do?"
+ALIPAY_APPID = '2016092900625962'
+
+# ALIPAY_NOTIFY_URL = "http://127.0.0.1:8888/pay_result/" # 如果只可以内网访问开发服务器
+ALIPAY_NOTIFY_URL = "http://1.203.45.678:8888/pay_result/" # 如果生产环境或外网可以访问开发
+ALIPAY_RETURN_URL = "http://1.203.45.678:8888/pay_result/"

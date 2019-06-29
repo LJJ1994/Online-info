@@ -42,7 +42,7 @@ CourseDetail.prototype.initPlayer = function () {
                var token = res['data']['token'];
                player.setToken(e.file, token);
             } else {
-               window.messageBox.showError(res.message);
+               window.messageBox.showInfo(res.message);
                player.stop();
             }
          },
