@@ -56,8 +56,10 @@ def news_detail(request, news_id):
     :return: news
     """
     news = News.objects.select_related('author', 'category').prefetch_related('comment__author').get(pk=news_id)
+    newses = News.objects.all()[0:3]
     context = {
-        'news': news
+        'news': news,
+        'newses': newses
     }
 
     return render(request, 'news/news_detail.html', context=context)

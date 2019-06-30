@@ -307,20 +307,16 @@ FrontBase.prototype.run = function () {
 // };
 
 FrontBase.prototype.listenSwitchBottom = function () {
-  var urlStr = location.href;
-  var urlStatus = false;
-
-  $('#nav-info a').each(function(){
-      if ((urlStr + '/').indexOf($(this).attr('href')) > -1 && $(this).attr('href') !== '') {
-          $(this).addClass('active');
-          urlStatus = true;
-      } else {
-            $(this).removeClass('active')
-      }
-  });
-  if (!urlStatus) {
-      $('#nav-info a').eq(0).addClass('active');
-  }
+    // $("#nav-info a").mouseover(function() {
+    //     var left = $(this).offset().left - $("#nav-info").offset().left;
+    //     var fly = $("#koyoz");
+    //     if (fly.is(":animated")) {
+    //         fly.stop();
+    //     }
+    //     fly.animate({
+    //         marginLeft:left
+    //     }, 500);
+    // })
 };
 
 $(function () {
