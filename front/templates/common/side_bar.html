@@ -1,7 +1,8 @@
+{% load news_filter %}
 <div class="sidebar-wrapper">
                 <div class="title-group">
                     <span class="title">小饭桌创业课堂</span>
-                    <a href="" class="more">更多</a>
+                    <a href="{% url 'course:course_index' %}" class="more">更多</a>
                 </div>
                 <div class="avertise-group">
                     <a href="#"><img src="http://www.xfz.cn/static/build/images/side-gift-banner.png" alt=""></a>
@@ -26,22 +27,25 @@
                         <span class="title">热门推荐</span>
                     </div>
                     <div class="hot-list-group">
-                        <li>
-                            <div class="left-group">
-                                <p class="title">
-                                    <a href="#">王健林卖掉进军海外首个项目:17亿售伦敦ON...</a>
-                                </p>
-                                <p class="more">
-                                    <span class="category">深度报导</span>
-                                    <span class="pub-time">1小时前</span>
-                                </p>
-                            </div>
-                            <div class="right-group">
-                                <a href="#">
-                                    <img src="http://static-image.xfz.cn/1516169692_914.jpg-website.news.list" alt="">
-                                </a>
-                            </div>
-                        </li>
+                        {% for news in newses %}
+                            <li>
+                                <div class="left-group">
+                                    <p class="title">
+                                        <a href="{% url 'news:news_detail' news_id=news.pk %}">{{ news.title }}</a>
+                                    </p>
+                                    <p class="more">
+                                        <span class="category">{{ news.category.name }}</span>
+                                        <span class="pub-time">{{ news.pub_time | time_since}}</span>
+                                    </p>
+                                </div>
+                                <div class="right-group">
+                                    <a href="{% url 'news:news_detail' news_id=news.pk %}">
+                                        <img src="{{ news.thumbnail }}" alt="">
+                                    </a>
+                                </div>
+                            </li>
+                        {% endfor %}
+
                     </div>
                 </div>
             </div>

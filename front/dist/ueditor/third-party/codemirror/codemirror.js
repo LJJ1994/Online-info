@@ -1799,7 +1799,7 @@ var CodeMirror = (function() {
         goLineStart: function(cm) {cm.setCursor(cm.getCursor().line, 0, true);},
         goLineStartSmart: function(cm) {
             var cur = cm.getCursor();
-            var text = cm.getLine(cur.line), firstNonWS = Math.max(0, text.search(/\S/));
+            var text = cm.getLine(cur.line), firstNonWS = Math.max(0, text.search1(/\S/));
             cm.setCursor(cur.line, cur.ch <= firstNonWS && cur.ch ? 0 : firstNonWS, true);
         },
         goLineEnd: function(cm) {cm.setSelection({line: cm.getCursor().line}, null, true);},
@@ -2609,7 +2609,7 @@ var CodeMirror = (function() {
     // Used mostly to find indentation.
     function countColumn(string, end, tabSize) {
         if (end == null) {
-            end = string.search(/[^\s\u00a0]/);
+            end = string.search1(/[^\s\u00a0]/);
             if (end == -1) end = string.length;
         }
         for (var i = 0, n = 0; i < end; ++i) {
@@ -3519,7 +3519,7 @@ CodeMirror.defineMode("htmlmixed", function(config, parserConfig) {
     }
     function maybeBackup(stream, pat, style) {
         var cur = stream.current();
-        var close = cur.search(pat);
+        var close = cur.search1(pat);
         if (close > -1) stream.backUp(cur.length - close);
         return style;
     }

@@ -31,8 +31,8 @@ class Course(models.Model):
 class CourseOrder(models.Model):
     """课程订单"""
     uid = ShortUUIDField(primary_key=True)  # 每个订单的uid都不同
-    course = models.ForeignKey('Course', on_delete=models.DO_NOTHING)
-    buyer = models.ForeignKey('xfzauth.User', on_delete=models.DO_NOTHING)
+    course = models.ForeignKey('Course', on_delete=models.DO_NOTHING, related_name='course_order')
+    buyer = models.ForeignKey('xfzauth.User', on_delete=models.DO_NOTHING, related_name='course_order')
     trade_no = models.CharField(max_length=200)
     amount = models.FloatField()
     pub_time = models.DateTimeField(auto_now_add=True)

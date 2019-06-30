@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.conf import settings
+from django.db.models import Q
 from django.views.decorators.http import require_GET, require_POST
 
 from .models import News, NewsCategory, Comment
@@ -85,5 +86,23 @@ def news_comment(request):
 
 
 def search(request):
+    """
+    通过关键字q获取查询的字符串
+    :param request: q
+    :return: news
+    """
+    q = request.GET.get('q')
+    if q:
+        newses = News.objects.filter(Q(title__icontains=q)|Q(content__icontains=q))
+        context = {
+            'newses': newses,
+            'q': q
+        }
+    else:
+        newses = News.objects.all()[0:4]
+        context = {
+            'newses': newses,
+            'q': q
+        }
 
-    return render(request, 'search/search.html')
+    return render(request, 'search/search1.html', context=context)

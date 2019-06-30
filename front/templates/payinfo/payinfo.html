@@ -12,30 +12,19 @@
                     <img src="http://www.xfz.cn/static/build/images/web-venture-banner.png" alt="">
                 </div>
                 <ul class="document-list">
-                    <li>
-                        <div class="category-group"></div>
-                        <div class="document-info">
-                            <p class="document-title">如何写好一份商业计划书</p>
-                            <p class="document-desc">一份好的商业计划书，是创业成功的开始！</p>
-                            <p class="document-price">￥8.8</p>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="category-group"></div>
-                        <div class="document-info">
-                            <p class="document-title">如何写好一份商业计划书</p>
-                            <p class="document-desc">一份好的商业计划书，是创业成功的开始！</p>
-                            <p class="document-price">￥8.8</p>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="category-group"></div>
-                        <div class="document-info">
-                            <p class="document-title">如何写好一份商业计划书</p>
-                            <p class="document-desc">一份好的商业计划书，是创业成功的开始！</p>
-                            <p class="document-price">￥8.8</p>
-                        </div>
-                    </li>
+                    {% for payinfo in payinfos %}
+                        <a href="{% url 'payinfo:payinfo_order' payinfo_id=payinfo.pk %}">
+                            <li>
+                                <div class="category-group"></div>
+                                <div class="document-info">
+                                    <p class="document-title">{{ payinfo.title }}</p>
+                                    <p class="document-desc">{{ payinfo.profile }}</p>
+                                    <p class="document-price">￥{{ payinfo.price }}</p>
+                                </div>
+                            </li>
+                        </a>
+                    {% endfor %}
+
                 </ul>
             </div>
             {% include 'common/side_bar.html' %}

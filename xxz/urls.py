@@ -17,11 +17,13 @@ from django.urls import path, include
 from django.conf.urls.static import static
 from django.conf import settings
 
+
 from apps.news import views
 
 urlpatterns = [
     path('', views.index, name='index'),
-    path('search/', views.search, name='search'),
+    # path('search/', include('haystack.urls')), # 全文搜索引擎whoosh
+    path('search/', views.search, name='search'), # 普通搜索
     path('cms/', include('apps.cms.urls')),
     path('news/', include('apps.news.urls')),
     path('account/', include('apps.xfzauth.urls')),

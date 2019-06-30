@@ -6,6 +6,16 @@ CourseDetail.prototype.run = function () {
    this.initPlayer();
 };
 
+CourseDetail.prototype.listenPayEvent = function () {
+  var buyBtn = $('.buy-btn');
+  var user = buyBtn.attr('data-user-id');
+  buyBtn.click(function (e) {
+    if (!user) {
+        window.messageBox.showInfo('请先登录!');
+    }
+  })
+};
+
 CourseDetail.prototype.initPlayer = function () {
   var videoInfo = $('#video-info');
   var video_url = videoInfo.attr('data-video-url');

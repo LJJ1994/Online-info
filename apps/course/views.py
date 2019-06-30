@@ -16,7 +16,6 @@ from django.views.decorators.csrf import csrf_exempt
 from django.conf import settings
 from django.views.decorators.http import require_POST
 from django.http import JsonResponse
-from django.http.multipartparser import MultiPartParser
 
 from alipay import AliPay
 
@@ -51,8 +50,11 @@ def course_detail(request, course_id):
     :return:
     """
     course = Course.objects.get(pk=course_id)
+    order_exist = CourseOrder.objects.filter(course_id=course_id, buyer=request.user, status=2).exists()
+
     context = {
-        'course': course
+        'course': course,
+        'order_exist': order_exist
     }
 
     return render(request, 'course/course_detail.html', context=context)
@@ -180,6 +182,7 @@ def create_order_request(request):
     return  JsonResponse({'alipay_url': alipay_url})
 
 
+@require_POST
 def order_payment_result(request):
     """
     接受从支付宝返回的参数,提取其中的sign参数进行签名验证
@@ -201,7 +204,7 @@ def order_payment_result(request):
     print('*' * 30)
     print('alipay_dict数据：%s' % alipay_dict)
     print('*' * 30)
-    print('签名值:%s' % alipay_sign)
+    print('签名值是多少?:%s' % alipay_sign)
 
     alipay_client = init_alipay_obj()
     result = True

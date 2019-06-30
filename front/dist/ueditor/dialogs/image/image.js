@@ -63,7 +63,7 @@
                 onlineImage = onlineImage || new OnlineImage('imageList');
                 onlineImage.reset();
                 break;
-            case 'search':
+            case 'search.html':
                 setAlign(editor.getOpt('imageManagerInsertAlign'));
                 searchImage = searchImage || new SearchImage();
                 break;
@@ -97,7 +97,7 @@
                 case 'online':
                     list = onlineImage.getInsertList();
                     break;
-                case 'search':
+                case 'search.html':
                     list = searchImage.getInsertList();
                     remote = true;
                     break;

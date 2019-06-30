@@ -150,7 +150,7 @@ body {
     .sidebar-wrapper {
       float: right;
       width: 356px;
-      height: 612px;
+      //height: 612px;
       background: #ffffff;
 
         .title-group {
@@ -255,6 +255,9 @@ body {
 
               .title {
                 font-size: 16px;
+                overflow: hidden;
+                width: 204px;
+                height: 50px;
 
                 a {
                   color: #212121;
