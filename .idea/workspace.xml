@@ -1,19 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6ba99ada-4f6e-4e84-b629-6e324c5f7b72" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/deployment.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/webServers.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/animate_test.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/xxz.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/xxz.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/news/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/news/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/dist/js/front-base.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/dist/js/front-base.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/js/front-base.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/js/front-base.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/xxz1.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/xxz2.sql" beforeDir="false" />
-    </list>
+    <list default="true" id="6ba99ada-4f6e-4e84-b629-6e324c5f7b72" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,7 +59,7 @@
         <entry file="file://$PROJECT_DIR$/utils/restful.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="37">
-              <caret line="8" column="12" selection-start-line="8" selection-start-column="12" selection-end-line="8" selection-end-column="12" />
+              <caret line="19" column="16" selection-start-line="19" selection-start-column="16" selection-end-line="19" selection-end-column="16" />
             </state>
           </provider>
         </entry>
@@ -330,12 +318,12 @@
       <workItem from="1561839249363" duration="21073000" />
       <workItem from="1561868993669" duration="2110000" />
       <workItem from="1561871378921" duration="76000" />
-      <workItem from="1561871467164" duration="188000" />
+      <workItem from="1561871467164" duration="1040000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="184827000" />
+    <option name="totallyTimeSpent" value="185679000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -348,7 +336,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="28" width="1366" height="693" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.21580547" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -367,7 +354,7 @@
       <window_info anchor="bottom" id="Database Changes" order="10" />
       <window_info anchor="bottom" id="manage.py@xxz" order="11" weight="0.5151515" />
       <window_info anchor="bottom" id="CSS-X-Fire" order="12" />
-      <window_info anchor="bottom" id="Terminal" order="13" weight="0.7023173" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="13" visible="true" weight="0.7023173" />
       <window_info anchor="bottom" id="Event Log" order="14" side_tool="true" />
       <window_info anchor="bottom" id="Python Console" order="15" weight="0.32976827" />
       <window_info anchor="bottom" id="File Transfer" order="16" weight="0.32976827" />
@@ -806,7 +793,7 @@
     <entry file="file://$PROJECT_DIR$/utils/restful.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="37">
-          <caret line="8" column="12" selection-start-line="8" selection-start-column="12" selection-end-line="8" selection-end-column="12" />
+          <caret line="19" column="16" selection-start-line="19" selection-start-column="16" selection-end-line="19" selection-end-column="16" />
         </state>
       </provider>
     </entry>
