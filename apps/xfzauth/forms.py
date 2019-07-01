@@ -7,6 +7,7 @@ from django.core.cache import cache
 from apps.common.forms import FormMixin
 from .models import User
 
+
 class FormLogin(forms.Form, FormMixin):
     """
     登录表单处理

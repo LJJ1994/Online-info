@@ -226,9 +226,9 @@ Auth.prototype.listenSignupEvent = function () {
             url: '/account/register/',
             data: data,
             type: 'POST',
-            headers: {
-               'X-CSRFToken': getCookie('csrftoken')
-            },
+            // headers: {
+            //    'X-CSRFToken': getCookie('csrftoken')
+            // },
             success: function (res) {
                 if (res.code === 200) {
                     window.messageBox.showSuccess('注册成功!');

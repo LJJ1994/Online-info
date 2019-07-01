@@ -25,7 +25,7 @@ SECRET_KEY = '5q1w7h@9$e_0(@z3a322d=p5pl!0+ixhz044kol$9sbkzf0-*-'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['47.106.103.77','localhost']
 
 
 # Application definition
@@ -188,6 +188,8 @@ UEDITOR_CONFIG_PATH = os.path.join(BASE_DIR, 'front', 'dist', 'ueditor', 'config
 
 # 加载文章数目
 ONE_PAGE_NEWS = 4
+# 热门推荐文章数目
+HOT_NEWS_COUNT = 3
 
 # debug-toolbar配置
 INTERNAL_IPS = [

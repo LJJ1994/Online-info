@@ -122,10 +122,14 @@ def register(request):
         password = forms.cleaned_data.get('password1')
         username = forms.cleaned_data.get('username')
 
-        user = User.objects.create_user(telephone=telephone, username=username, password=password)
-
-        # login(request, user)
-        return restful.ok(message='注册成功!')
+        User.objects.create_user(telephone=telephone, username=username, password=password)
+        user = authenticate(telephone=telephone, password=password)
+        print('user:--------------->%s' % user)  # 返回的是手机号,而前端用手机号注册
+        if user:
+            login(request, user)
+            return restful.ok(message='注册成功!')
+        else:
+            return restful.ok(message='注册成功!')
 
     else:
         error = forms.get_errors()

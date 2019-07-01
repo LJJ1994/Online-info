@@ -17,10 +17,13 @@ def index(request):
     :return: index.html
     """
     count = settings.ONE_PAGE_NEWS
+    hot_count = settings.HOT_NEWS_COUNT
     news = News.objects.select_related('category', 'author').order_by('-pub_time')[0:count]
+    hot_newses = News.objects.order_by('pub_time')[0:hot_count]
     categories = NewsCategory.objects.all()
     context = {
         'newses': news,
+        'hot_newses': hot_newses,
         'categories': categories
     }
 
