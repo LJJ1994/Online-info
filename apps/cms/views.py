@@ -4,12 +4,13 @@ from urllib import parse
 from datetime import datetime
 
 from django.conf import settings
-from django.shortcuts import render
+from django.shortcuts import render, redirect, reverse
 from django.contrib.admin.views.decorators import staff_member_required
 from django.views.generic import View
 from django.views.decorators.http import require_POST, require_GET
 from django.core.paginator import Paginator
 from django.utils.timezone import make_aware
+from django.contrib.auth import logout
 
 from apps.news.models import NewsCategory
 from utils import restful
@@ -21,6 +22,20 @@ from apps.news.models import News, NewsCategory
 def index(request):
 
     return render(request, 'cms/index.html')
+
+
+@staff_member_required(login_url='index')
+def cms_logout(request):
+    """
+    cms后台用户登出
+    :param request:
+    :return:
+    """
+    try:
+        logout(request)
+        return redirect(reverse('news:index'))
+    except:
+        return restful.param_error(message='退出失败!')
 
 
 class NewsListView(View):

@@ -1,7 +1,11 @@
 {% extends 'cms/base.html' %}
 
 {% block title %}
-    课程发布页
+    {% if course %}
+       {{ course.title }} | 课程编辑
+        {% else %}
+        课程发布
+    {% endif %}
 {% endblock %}
 
 {% block head %}
@@ -11,7 +15,11 @@
 {% endblock %}
 
 {% block content-header %}
-    <h1>发布课程</h1>
+    {% if course %}
+        <h1>编辑课程</h1>
+        {% else %}
+        <h1>发布</h1>
+    {% endif %}
 {% endblock %}
 
 {% block content %}
@@ -21,13 +29,21 @@
                 <div class="box-header">
                     <div class="form-group">
                         <label for="title-input">标题: </label>
-                        <input type="text" class="form-control" placeholder="课程标题" name="title" id="title-input">
+                        {% if course %}
+                            <input type="text" value="{{ course.title }}" class="form-control" placeholder="课程标题" name="title" id="title-input">
+                            {% else %}
+                            <input type="text" class="form-control" placeholder="课程标题" name="title" id="title-input">
+                        {% endif %}
                     </div>
                     <div class="form-group">
                         <label for="category-input">分类: </label>
                         <select name="category" id="category-input" class="form-control">
                             {% for category in categories %}
-                                <option value="{{ category.pk }}">{{ category.name }}</option>
+                                {% if course and course.category_id == category.pk %}
+                                    <option value="{{ category.pk }}" selected>{{ category.name }}</option>
+                                    {% else %}
+                                    <option value="{{ category.pk }}">{{ category.name }}</option>
+                                {% endif %}
                             {% endfor %}
                         </select>
                     </div>
@@ -35,36 +51,62 @@
                         <label for="teacher-input">讲师: </label>
                         <select class="form-control" name="teacher" id="teacher-input">
                             {% for teacher in teachers %}
-                                <option value="{{ teacher.pk }}">{{ teacher.username }}</option>
+                                {% if course and course.teacher_id == teacher.pk %}
+                                    <option value="{{ teacher.pk }}" selected>{{ teacher.username }}</option>
+                                    {% else %}
+                                    <option value="{{ teacher.pk }}">{{ teacher.username }}</option>
+                                {% endif %}
+
                             {% endfor %}
                         </select>
                     </div>
                     <div class="form-group">
                         <label for="video-input">视频地址: </label>
-                        <input type="text" class="form-control" name="video_url" id="video-input" placeholder="视频地址">
+                        {% if course %}
+                            <input value="{{ course.video_url }}" type="text" class="form-control" name="video_url" id="video-input" placeholder="视频地址">
+                            {% else %}
+                            <input type="text" class="form-control" name="video_url" id="video-input" placeholder="视频地址">
+                        {% endif %}
                     </div>
                     <div class="form-group">
                         <label for="cover-input">封面图: </label>
-                        <input type="text" class="form-control" name="cover" id="cover-input" placeholder="封面图">
+                        {% if course %}
+                            <input type="text" value="{{ course.cover_url }}" class="form-control" name="cover" id="cover-input" placeholder="封面图">
+                            {% else %}
+                            <input type="text" class="form-control" name="cover" id="cover-input" placeholder="封面图">
+                        {% endif %}
                     </div>
                     <div class="form-group">
                         <label for="price-input">价格: </label>
-                        <input type="text" class="form-control" name="price" id="price-input" placeholder="价格">
+                        {% if course %}
+                            <input type="text" value="{{ course.price }}" class="form-control" name="price" id="price-input" placeholder="价格">
+                        {% else %}
+                            <input type="text" class="form-control" name="price" id="price-input" placeholder="价格">
+                        {% endif %}
                     </div>
                     <div class="form-group">
                         <label for="duration-input">时长: </label>
-                        <input type="text" class="form-control" id="duration-input" name="duration" placeholder="时长">
+                        {% if course %}
+                            <input type="text" value="{{ course.duration }}" class="form-control" id="duration-input" name="duration" placeholder="时长">
+                            {% else %}
+                            <input type="text" class="form-control" id="duration-input" name="duration" placeholder="时长">
+                        {% endif %}
                     </div>
                     <div class="form-group">
                         <label for="course-editor">简介: </label>
-                        <script id="course-editor" type="text/plain"></script>
+                        {% if course %}
+                            <script id="course-editor" type="text/plain">
+                            {{ course.profile|safe }}
+                            </script>
+                            {% else %}
+                            <script id="course-editor" type="text/plain"></script>
+                        {% endif %}
                     </div>
                     <div class="form-group">
-                        <button class="btn btn-default pull-right" id="submit-btn">发布课程</button>
+                        <button data-course-id="{{ course.pk }}" class="btn btn-default pull-right" id="submit-btn">发布课程</button>
                     </div>
                 </div>
                 <div class="box-footer">
-
                 </div>
             </div>
         </div>

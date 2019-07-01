@@ -36,3 +36,18 @@ class PublicCourseForm(forms.ModelForm, FormMixin):
     class Meta:
         model = Course
         exclude = ['category', 'teacher']
+
+
+class EditNewsCourseCategoryForm(forms.Form, FormMixin):
+    pk = forms.IntegerField(error_messages={'required': '必须传入要删除的分类ID！'})
+    name = forms.CharField(max_length=100)
+
+
+class EditCourseForm(forms.ModelForm, FormMixin):
+    pk = forms.IntegerField()
+    category_id = forms.IntegerField()
+    teacher_id = forms.IntegerField()
+
+    class Meta:
+        model = Course
+        exclude = ['category', 'pub_time', 'teacher']

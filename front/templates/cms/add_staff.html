@@ -1,0 +1,40 @@
+{% extends 'cms/base.html' %}
+
+{% block head %}
+{% endblock %}
+
+{% block title %}
+    添加员工 | 页面
+{% endblock %}
+
+{% block content-header %}
+    <h1>添加员工</h1>
+{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-6">
+            <div class="box">
+                <form action="" method="post">
+                    <div class="box-body">
+                        <div class="form-group">
+                            <label for="telephone-input">手机号码: </label>
+                            <input type="text" id="telephone-input" name="telephone" class="form-control">
+                        </div>
+                        <div class="checkbox">
+                            {% for group in groups %}
+                                <label style="margin-right: 20px;">
+                                    <input type="checkbox" name="groups" value="{{ group.pk }}">
+                                    {{ group.name }}
+                                </label>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class="box-footer">
+                        <button type="submit" class="btn btn-primary pull-right">立即添加</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

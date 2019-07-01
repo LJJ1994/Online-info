@@ -1,0 +1,46 @@
+{% extends 'cms/base.html' %}
+
+{% block title %}
+    个人中心
+{% endblock %}
+
+{% block head %}
+
+{% endblock %}
+
+{% block content-header %}
+    <h1>个人中心</h1>
+{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box">
+                <div class="box-body">
+                    {% if request.user.is_staff %}
+                        <div class="form-group">
+                            <label for="name">你的名字:</label>
+                            <span id="name">{{ username }}</span>
+                        </div>
+                        <div class="form-group">
+                            <label for="telephone">你的手机号:</label>
+                            <span id="telephone">{{ telephone }}</span>
+                        </div>
+                        <div class="form-group">
+                            <label for="staff-email">你的邮箱:</label>
+                            <span id="staff-email">{{ email }}</span>
+                        </div>
+                        <div class="form-grou">
+                            <label for="is-staff">是否为员工:</label>
+                            <span id="is-staff">{{ is_staff }}</span>
+                        </div>
+                        <div class="form-group">
+                            <label for="date-joined">加入时间:</label>
+                            <span id="date-joined">{{ date_joined }}</span>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

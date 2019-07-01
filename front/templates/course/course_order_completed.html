@@ -23,8 +23,17 @@
         <div class="wrapper">
             <div class="order-complete" style="text-align:center; width: 100%;overflow: hidden">
                 <span style="display: inline-block;">支付成功!</span>
-                <a href="{% url 'payinfo:index' %}" style="font-size:30px; color: #3c3c3c;background: #FFFFFF;cursor: pointer">返回首页</a>
+                <a href="{% url 'course:course_index' %}" style="font-size:30px; color: #3c3c3c;background: #FFFFFF;cursor: pointer">返回首页</a>
             </div>
         </div>
     </div>
+    <script>
+        var dataJson = document.location.search.substr(1);
+        $.post({
+            url: '/course/order_payment_result/',
+            data: {
+                'alipayData': dataJson
+           }
+        })
+    </script>
 {% endblock %}

@@ -11,6 +11,15 @@ PubCourse.prototype.initUEditor = function () {
 PubCourse.prototype.listenSubmitEvent = function () {
     var submitBtn = $("#submit-btn");
     submitBtn.click(function () {
+        var pk = submitBtn.attr('data-course-id');
+        console.log(pk);
+        var url = '';
+        if (pk) {
+            url =  '/cms/edit_course/'
+        } else {
+            url = '/cms/pub_course/'
+        }
+
         var title = $("#title-input").val();
         var category_id = $("#category-input").val();
         var teacher_id = $("#teacher-input").val();
@@ -21,7 +30,7 @@ PubCourse.prototype.listenSubmitEvent = function () {
         var profile = window.ue.getContent();
 
         $.post({
-            url: '/cms/pub_course/',
+            url: url,
             data: {
                 'title': title,
                 'video_url': video_url,
@@ -30,7 +39,8 @@ PubCourse.prototype.listenSubmitEvent = function () {
                 'duration': duration,
                 'profile': profile,
                 'category_id': category_id,
-                'teacher_id': teacher_id
+                'teacher_id': teacher_id,
+                'pk': pk
             },
             success: function (res) {
                 if(res['code'] === 200){
