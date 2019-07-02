@@ -1,0 +1,53 @@
+{% extends 'cms/base.html' %}
+
+{% block title %}
+    课程老师
+{% endblock %}
+
+{% block head %}
+    <script src="{% static 'ueditor/ueditor.config.js' %}"></script>
+    <script src="{% static 'ueditor/ueditor.all.min.js' %}"></script>
+    <script src="https://unpkg.com/qiniu-js@2.4.0/dist/qiniu.min.js"></script>
+    <script src="{% static 'js/teacher.min.js' %}"></script>
+{% endblock %}
+
+{% block content-header %}
+    <h1>课程讲师</h1>
+{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box box-primary">
+                <div class="box-header">
+                    <a href="{% url 'cms:add_course_teacher' %}">
+                        <button id="add-btn" class="btn btn-default btn-xs pull-right">添加讲师</button>
+                    </a>
+                </div>
+            </div>
+            <div class="box-body">
+                <table class="table-bordered table">
+                    <thead>
+                        <tr>
+                            <th>讲师名称</th>
+                            <th>职位</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for teacher in teachers %}
+                        <tr>
+                            <td>{{ teacher.username }}</td>
+                            <td>{{ teacher.jobtitle }}</td>
+                            <td>
+                                <a href="{% url 'cms:edit_course_teacher' %}?teacher_id={{ teacher.pk }}"><button class="btn btn-warning btn-xs edit-btn">编辑</button></a>
+                                <button data-teacher-id="{{ teacher.pk }}" class="btn btn-danger btn-xs delete-btn">删除</button>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}

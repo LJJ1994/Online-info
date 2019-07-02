@@ -1,5 +1,6 @@
 from django.db import models
 from shortuuidfield import ShortUUIDField
+from datetime import datetime
 
 
 class CourseCategory(models.Model):
@@ -13,6 +14,7 @@ class Teacher(models.Model):
     avatar = models.URLField()
     profile = models.TextField()
     jobtitle = models.CharField(max_length=100)
+    pub_time = models.DateTimeField(default=datetime.now)
 
 
 class Course(models.Model):

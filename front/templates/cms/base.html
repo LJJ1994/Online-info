@@ -135,6 +135,25 @@
                         <span>课程分类</span>
                     </a>
                 </li>
+                <li>
+                    <a href="{% url 'cms:course_teacher' %}">
+                        <i class="fa glyphicon glyphicon-user"></i>
+                        <span>课程讲师</span>
+                    </a>
+                </li>
+                <li class="header">付费资讯管理</li>
+                <li>
+                    <a href="{% url 'cms:payinfo_list' %}">
+                        <i class="fa fa-tv"></i>
+                        <span>付费列表</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'cms:write_payinfo' %}">
+                        <i class="fa fa-tv"></i>
+                        <span>发布付费资讯</span>
+                    </a>
+                </li>
                 {% if user.is_superuser %}
                     <li class="header">员工管理</li>
                     <li>

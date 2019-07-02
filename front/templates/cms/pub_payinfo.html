@@ -1,0 +1,82 @@
+{% extends 'cms/base.html' %}
+
+{% block title %}
+    {% if payinfo %}
+        编辑付费资讯
+        {% else %}
+        发布付费资讯
+    {% endif %}
+{% endblock %}
+
+{% block head %}
+    <script src="{% static 'ueditor/ueditor.config.js' %}"></script>
+    <script src="{% static 'ueditor/ueditor.all.min.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'css/adminlte/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css' %}">
+    <script src="{% static 'css/adminlte/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js' %}"></script>
+    <script src="{% static 'css/adminlte/bower_components/bootstrap-datepicker/dist/locales/bootstrap-datepicker.zh-CN.min.js' %}"></script>
+    <script src="{% static 'js/arttemplate.js' %}"></script>
+    <script src="{% static 'js/pub_payinfo.min.js'%}"></script>
+{% endblock %}
+
+{% block content-header %}
+    {% if payinfo %}
+        编辑付费资讯
+        {% else %}
+        发布付费资讯
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box box-primary">
+                <form action="" class="form">
+                    <div class="box-body">
+                        <div class="form-group">
+                            <label for="title-form">标题</label>
+                            {% if payinfo %}
+                                <input type="text" class="form-control" name="title" id="title-form" value="{{ payinfo.title }}">
+                                {% else %}
+                                <input type="text" class="form-control" name="title" id="title-form">
+                            {% endif %}
+                        </div>
+                        <div class="form-group">
+                            <label for="desc-form" class="desc">简介</label>
+                            {% if payinfo %}
+                                <input type="text" id="desc-form" name="profile" class="form-control" value="{{ payinfo.profile }}">
+                                {% else %}
+                                <input type="text" id="desc-form" name="profile" class="form-control">
+                            {% endif %}
+                        </div>
+                        <div class="form-group">
+                            <label for="content-form">价格</label>
+                            {% if payinfo %}
+                                <input type="text" class="form-control" name="price" id="content-form" value="{{ payinfo.price }}">
+                                {% else %}
+                                <input type="text" class="form-control" name="price" id="content-form">
+                            {% endif %}
+                        </div>
+                        <div class="form-group">
+                            <div class="input-group">
+                                {% if payinfo %}
+                                    <input type="text" id="thumbnail-form" name="thumbnail" class="form-control" value="{{ payinfo.file }}">
+                                    {% else %}
+                                    <input type="text" id="thumbnail-form" name="thumbnail" class="form-control">
+                                {% endif %}
+                                <span class="input-group-btn">
+                                    <label class="btn btn-default btn-file">
+                                        上传文件
+                                        <input hidden type="file" class="btn btn-default" id="thumbnail-btn">
+                                    </label>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="box-footer">
+                        <button data-payinfo-id="{{ payinfo.pk }}" class="btn btn-default pull-right" id="submit-btn">发布资讯</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

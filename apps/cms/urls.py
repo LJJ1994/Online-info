@@ -5,6 +5,7 @@ from django.urls import path
 from . import views
 from . import course_views
 from . import staffs_views
+from . import payinfo_views
 
 app_name = 'cms'
 
@@ -35,6 +36,10 @@ urlpatterns += [
     path('course_list/', course_views.CourseListView.as_view(), name='course_list'),
     path('edit_course/', course_views.EditCourseView.as_view(), name='edit_course'),
     path('delete_course/', course_views.delete_course, name='delete_course'),
+    path('course_teacher/', course_views.course_teacher, name='course_teacher'),
+    path('add_course_teacher/', course_views.AddTeacherView.as_view(), name='add_course_teacher'),
+    path('edit_course_teacher/', course_views.EditTeacherView.as_view(), name='edit_course_teacher'),
+    path('delete_course_teacher/', course_views.delete_course_teacher, name='delete_course_teacher'),
 ]
 
 # 员工管理相关的url
@@ -42,4 +47,12 @@ urlpatterns += [
     path('staffs/', staffs_views.staffs_views, name='staffs'),
     path('staff_center/', staffs_views.staff, name='staff'),
     path('add_staff/', staffs_views.AddStaffView.as_view(), name='add_staff'),
+]
+
+# 付费资讯相关的url
+urlpatterns += [
+    path('payinfo_list/', payinfo_views.PayinfoListView.as_view(), name='payinfo_list'),
+    path('write_payinfo/', payinfo_views.WritePayinfoView.as_view(), name='write_payinfo'),
+    path('delete_payinfo/', payinfo_views.delete_payinfo, name='delete_payinfo'),
+    path('edit_payinfo/', payinfo_views.EditPayinfoView.as_view(), name='edit_payinfo'),
 ]

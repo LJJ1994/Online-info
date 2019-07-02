@@ -5,6 +5,7 @@ from django import forms
 from apps.common.forms import FormMixin
 from apps.news.models import News
 from apps.course.models import Course, CourseCategory, Teacher
+from apps.payinfo.models import PayInfo
 
 
 class EditNewsCategoryForm(forms.Form, FormMixin):
@@ -51,3 +52,13 @@ class EditCourseForm(forms.ModelForm, FormMixin):
     class Meta:
         model = Course
         exclude = ['category', 'pub_time', 'teacher']
+
+
+class EditCourseTeacherForm(forms.Form, FormMixin):
+    pk = forms.IntegerField(error_messages={'required': '必须传入要删除的讲师ID！'})
+    name = forms.CharField(max_length=100)
+
+
+class UploadFileForm(forms.Form, FormMixin):
+    title = forms.CharField()
+    file = forms.FileField()

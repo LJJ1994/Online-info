@@ -11,7 +11,8 @@ from django.core.paginator import Paginator
 from django.views.decorators.http import require_POST, require_GET
 
 from apps.course.models import CourseCategory, Course, Teacher
-from .forms import PublicCourseForm, EditNewsCourseCategoryForm, EditCourseForm
+from .forms import PublicCourseForm, EditNewsCourseCategoryForm, EditCourseForm,\
+    EditCourseTeacherForm
 from utils import restful
 
 
@@ -259,3 +260,87 @@ def delete_course_category(request):
         return restful.ok(message='删除成功!')
     except:
         return restful.param_error(message='要删除的新闻不存在!')
+
+
+@require_GET
+def course_teacher(request):
+    """
+    获取讲师信息表
+    :param request:
+    :return:
+    """
+    teachers = Teacher.objects.all()
+    context = {
+        'teachers': teachers
+    }
+
+    return render(request, 'cms/course_teacher.html', context=context)
+
+
+class EditTeacherView(View):
+    """
+    编辑讲师信息
+    :param request: username, avator, profile, jobtitle
+    :return: ok
+    """
+    def get(self, request):
+        teacher_id = request.GET.get('teacher_id')
+        teacher = Teacher.objects.get(pk=teacher_id)
+        context = {
+            'teacher': teacher
+        }
+        return render(request, 'cms/add_teacher.html', context=context)
+
+    def post(self, request):
+        username = request.POST.get('username')
+        avatar_url = request.POST.get('avatar_url')
+        profile = request.POST.get('profile')
+        jobtitle = request.POST.get('jobtitle')
+        pk = request.POST.get('pk')
+
+        try:
+            Teacher.objects.filter(pk=pk).update(username=username,profile=profile,jobtitle=jobtitle,avatar=avatar_url)
+            return restful.ok(message='编辑讲师成功!')
+        except Teacher.DoesNotExist:
+            return restful.param_error(message='编辑讲师参数错误!')
+
+
+class AddTeacherView(View):
+    """
+    编写新闻类视图
+    """
+    def get(self, request):
+        return render(request, 'cms/add_teacher.html')
+
+    def post(self, request):
+        """
+        添加讲师信息
+        :param request:
+        :return:
+        """
+        username = request.POST.get('username')
+        avatar = request.POST.get('avatar_url')
+        profile = request.POST.get('profile')
+        jobtitle = request.POST.get('jobtitle')
+
+        try:
+            Teacher.objects.create(username=username, avatar=avatar, profile=profile,jobtitle=jobtitle)
+            return restful.ok(message='添加讲师成功!')
+
+        except Teacher.DoesNotExist:
+            return restful.param_error(message='讲师信息参数错误!')
+
+
+@require_POST
+def delete_course_teacher(request):
+    """
+    删除讲师
+    :param request:teacher_id
+    :return:
+    """
+    pk = request.POST.get('teacher_id')
+    try:
+        Teacher.objects.filter(pk=pk).delete()
+        return restful.ok(message='讲师删除成功!')
+    except Teacher.DoesNotExist:
+        return restful.param_error(message='要删除的讲师不存在!')
